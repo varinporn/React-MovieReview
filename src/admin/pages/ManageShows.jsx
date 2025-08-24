@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CategoryBadge from '../components/CategoryBadge'
 import ConfirmModal from '../components/ConfirmModal'
+import toast from 'react-hot-toast'
 
 const ManageShows = () => {
   const [shows, setShows] = useState([])
@@ -29,8 +30,10 @@ const ManageShows = () => {
       })
 
       if (!res.ok) {
+        toast.error('Failed to delete.')
         throw new Error('Failed to delete')
       }
+      toast.success('Successfully Delete.')
       setShows((shows) => shows.filter((show) => show.id !== deleteId))
       await getAllMovies()
     } catch (error) {

@@ -10,6 +10,7 @@ import DashboardLayout from '../admin/pages/DashboardLayout'
 import Dashboard from '../admin/pages/Dashboard'
 import ManageShows from '../admin/pages/ManageShows'
 import AddEditShow from '../admin/pages/AddEditShow'
+import Register from '../user/pages/Register'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: '/tv-show', element: <TVShow /> },
       { path: '/all', element: <AllList /> },
       { path: '/watch-list', element: <WatchList /> },
+      { path: '/register', element: <Register /> },
       {
         path: '/title/:id',
         element: <Detail />,
@@ -47,9 +49,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/admin/dashboard/edit-show/:id',
-        element: <AddEditShow/>,
+        element: <AddEditShow />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5001/shows/${params.id}`)
+          fetch(`http://localhost:5001/shows/${params.id}`),
       },
     ],
   },

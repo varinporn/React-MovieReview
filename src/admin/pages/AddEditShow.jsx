@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Breadcrumbs from '../components/Breadcrumbs'
+import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const AddEditShow = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
   const isEditMode = !!id
 
@@ -43,7 +46,6 @@ const AddEditShow = () => {
   const [starsList, setStarsList] = useState([])
   const [starsInput, setStarsInput] = useState('')
 
-  // โหลดข้อมูลโชว์เดิมตอน edit
   useEffect(() => {
     if (!isEditMode) return
     fetch(`http://localhost:5001/shows/${id}`)
@@ -140,9 +142,9 @@ const AddEditShow = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        alert(`Show ${isEditMode ? 'updated' : 'uploaded'} successfully!`)
+        toast.success(`Show ${isEditMode ? 'updated' : 'uploaded'} successfully!`)
+        navigate('/admin/dashboard/manage-shows')
         if (!isEditMode) {
-          // reset form เฉพาะ add ใหม่
           setForm({
             title: '',
             description: '',

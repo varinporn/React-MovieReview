@@ -69,12 +69,35 @@ const Navbar = () => {
       </div>
 
       {/* Right Section */}
-      <div className="flex items-center space-x-12 mr-8">
+      <div className="flex items-center space-x-4 mr-8">
+        {/* Log In */}
+        <button className="py-1 px-2 text-[#1E1B2E] font-semibold rounded-full cursor-pointer">
+          Log In
+        </button>
+        <svg
+          width="2"
+          height="32"
+          viewBox="0 0 2 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="1"
+            y1="4.37114e-08"
+            x2="0.999999"
+            y2="32"
+            stroke="#CACACA"
+            strokeWidth="2"
+          />
+        </svg>
 
         {/* Sign Up */}
-        <button className="px-6 py-1 bg-white text-[#1E1B2E] font-semibold rounded-full hover:bg-gray-100 transition">
+        <Link
+          to={'/register'}
+          className="px-5 py-1.5 bg-white text-[#1E1B2E] font-semibold rounded-full hover:bg-gray-100 transition"
+        >
           Sign Up
-        </button>
+        </Link>
       </div>
     </nav>
   )
