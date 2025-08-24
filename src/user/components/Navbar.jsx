@@ -70,18 +70,9 @@ const Navbar = () => {
 
       {/* Right Section */}
       <div className="flex items-center space-x-12 mr-8">
-        {/* Search */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Search"
-            className="pl-6 pr-10 py-1 rounded-full bg-white text-gray-900 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF79C6]"
-          />
-          <FaSearch className="absolute right-3 top-2.5 text-gray-500" />
-        </div>
 
         {/* Sign Up */}
-        <button className="px-6 py-1 bg-white border border-black text-black font-semibold rounded-full hover:bg-gray-100 transition">
+        <button className="px-6 py-1 bg-white text-[#1E1B2E] font-semibold rounded-full hover:bg-gray-100 transition">
           Sign Up
         </button>
       </div>

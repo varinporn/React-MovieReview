@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CategoryBadge from '../components/CategoryBadge'
 import ConfirmModal from '../components/ConfirmModal'
 
-const ManageMovies = () => {
+const ManageShows = () => {
   const [shows, setShows] = useState([])
   const [deleteId, setDeleteId] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -108,8 +108,11 @@ const ManageMovies = () => {
                 </td>
                 <td className="py-4 px-4 flex gap-4 items-center">
                   {/* edit btn */}
-                  
-                  <Link to={`/admin/dashboard/edit-show/${show.id}`} className="cursor-pointer">
+
+                  <Link
+                    to={`/admin/dashboard/edit-show/${show.id}`}
+                    className="cursor-pointer"
+                  >
                     <svg
                       width="16"
                       height="18"
@@ -180,4 +183,4 @@ const ManageMovies = () => {
   )
 }
 
-export default ManageMovies
+export default ManageShows

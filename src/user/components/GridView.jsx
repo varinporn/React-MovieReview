@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const MovieGallery = ({ shows, page }) => {
+const GridView = ({ shows, page }) => {
   return (
     <div>
       {/* card */}
@@ -22,6 +22,7 @@ const MovieGallery = ({ shows, page }) => {
                 className="w-full h-full object-cover"
               />
             </div>
+
             {/* star */}
             <div className="flex items-center gap-2">
               <svg
@@ -38,6 +39,7 @@ const MovieGallery = ({ shows, page }) => {
               </svg>
               <span>{show.rating || '-'}</span>
             </div>
+            
             {/* title */}
             <h3 className="font-medium text-base">{show.title}</h3>
 
@@ -66,4 +68,4 @@ const MovieGallery = ({ shows, page }) => {
   )
 }
 
-export default MovieGallery
+export default GridView

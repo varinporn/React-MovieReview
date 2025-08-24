@@ -2,16 +2,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from '../App'
 import Home from '../user/pages/Home'
 import Movie from '../user/pages/Movie'
-import Show from '../user/pages/Show'
+import TVShow from '../user/pages/TVShow'
 import WatchList from '../user/pages/WatchList'
 import Detail from '../user/pages/Detail'
 import AllList from '../user/pages/AllList'
 import DashboardLayout from '../admin/pages/DashboardLayout'
 import Dashboard from '../admin/pages/Dashboard'
-import ManageMovies from '../admin/pages/ManageMovies'
+import ManageShows from '../admin/pages/ManageShows'
 import AddEditShow from '../admin/pages/AddEditShow'
-// import AddMovie from '../admin/pages/AddMovie'
-// import UpdateMovie from '../admin/pages/UpdateMovie'
 
 const router = createBrowserRouter([
   {
@@ -20,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/movies', element: <Movie /> },
-      { path: '/tv-show', element: <Show /> },
+      { path: '/tv-show', element: <TVShow /> },
       { path: '/all', element: <AllList /> },
       { path: '/watch-list', element: <WatchList /> },
       {
@@ -40,8 +38,8 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: '/admin/dashboard/manage-movie',
-        element: <ManageMovies />,
+        path: '/admin/dashboard/manage-shows',
+        element: <ManageShows />,
       },
       {
         path: '/admin/dashboard/create-show',

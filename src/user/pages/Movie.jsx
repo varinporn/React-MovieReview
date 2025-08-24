@@ -3,13 +3,19 @@ import List from '../components/List'
 
 const Movie = () => {
   const [shows, setShows] = useState([])
-  useEffect(() => {
-    fetch('http://localhost:5001/shows')
-      .then((res) => res.json())
-      .then((data) =>
-        setShows(data.filter((item) => item.category === 'Movies'))
-      )
-  }, [])
+   const getAllMovies = async () => {
+     try {
+       const res = await fetch('http://localhost:5001/shows')
+       const data = await res.json()
+       setShows(data.filter((item) => item.category === 'Movies'))
+     } catch (error) {
+       console.error('Failed to fetch movies:', error)
+     }
+   }
+ 
+   useEffect(() => {
+     getAllMovies()
+   }, [])
 
   return (
     <div className="w-full">
