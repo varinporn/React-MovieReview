@@ -71,9 +71,9 @@ const Navbar = () => {
       {/* Right Section */}
       <div className="flex items-center space-x-4 mr-8">
         {/* Log In */}
-        <button className="py-1 px-2 text-[#1E1B2E] font-semibold rounded-full cursor-pointer">
+        <Link to={'/login'} className="py-1 px-2 text-[#1E1B2E] font-semibold rounded-full cursor-pointer">
           Log In
-        </button>
+        </Link>
         <svg
           width="2"
           height="32"

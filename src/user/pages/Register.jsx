@@ -95,7 +95,7 @@ const Register = () => {
               onChange={(e) => onChange('username', e.target.value)}
               onBlur={() => onBlur('username')}
               required
-              className="border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm placeholder-[#A2A2A2]"
+              className="border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
             />
             <div className="flex justify-end">
               {touched.username && !form.username && (
@@ -117,7 +117,7 @@ const Register = () => {
               onChange={(e) => onChange('email', e.target.value)}
               onBlur={() => onBlur('email')}
               required
-              className="itbms-email border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm placeholder-[#A2A2A2]"
+              className="itbms-email border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
             />
 
             <div className="flex justify-end">
@@ -141,7 +141,7 @@ const Register = () => {
                 onChange={(e) => onChange('password', e.target.value)}
                 onBlur={() => onBlur('password')}
                 required
-                className=" border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm placeholder-[#A2A2A2]"
+                className=" border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
               />
               <button
                 type="button"
@@ -204,7 +204,7 @@ const Register = () => {
                 value={form.confirmPassword}
                 onBlur={() => onBlur('confirmPassword')}
                 required
-                className=" border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm placeholder-[#A2A2A2]"
+                className=" border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
               />
               <button
                 type="button"
@@ -269,7 +269,7 @@ const Register = () => {
 
           <p className="text-[#808080] font-normal text-sm mt-4 text-center">
             Already have an account?
-            <Link className="text-[#FF79C6] ml-2" to={'/'}>
+            <Link className="text-[#FF79C6] ml-2" to={'/login'}>
               Login
             </Link>
           </p>

@@ -11,6 +11,7 @@ import Dashboard from '../admin/pages/Dashboard'
 import ManageShows from '../admin/pages/ManageShows'
 import AddEditShow from '../admin/pages/AddEditShow'
 import Register from '../user/pages/Register'
+import Login from '../user/pages/Login'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,8 @@ const router = createBrowserRouter([
       { path: '/all', element: <AllList /> },
       { path: '/watch-list', element: <WatchList /> },
       { path: '/register', element: <Register /> },
+      { path: '/login', element: <Login /> },
+
       {
         path: '/title/:id',
         element: <Detail />,
