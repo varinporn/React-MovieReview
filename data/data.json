@@ -1,8 +1,17 @@
 {
   "shows": [
     {
-      "id": "1",
       "title": "Squid Game 3",
+      "description": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. A tempting prize awaits, but with deadly high stakes.",
+      "category": "TV Shows",
+      "year": "2025",
+      "platform": "Netflix",
+      "episode": "6",
+      "duration": "",
+      "imageUrl": "https://preview.redd.it/first-poster-of-squid-game-season-3-v0-5ge18fthu8ae1.jpeg?auto=webp&s=0de82b6fb99e702134e2fe77abe17e4d58d20490",
+      "director": [
+        "Hwang Dong-hyuk"
+      ],
       "genres": [
         "Action",
         "Crime",
@@ -10,22 +19,13 @@
         "Mystery",
         "Thriller"
       ],
-      "category": "TV Shows",
-      "platform": "Netflix",
-      "year": "2025",
-      "description": "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. A tempting prize awaits, but with deadly high stakes.",
-      "episode": "6",
-      "director": [
-        "Hwang Dong-hyuk"
-      ],
       "stars": [
         "Lee Jung-jae",
         "Wi Ha-joon",
         "Jeon Young-soo",
         "Yim Si-wan"
       ],
-      "rating": "-",
-      "imageUrl": "https://preview.redd.it/first-poster-of-squid-game-season-3-v0-5ge18fthu8ae1.jpeg?auto=webp&s=0de82b6fb99e702134e2fe77abe17e4d58d20490"
+      "id": "1"
     },
     {
       "id": "2",

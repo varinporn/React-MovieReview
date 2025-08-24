@@ -40,7 +40,7 @@ const Detail = () => {
   }
 
   return (
-    <div className="h-screen text-black">
+    <div className="h-full text-black">
       <div className="my-[150px] mx-auto bg-[#F8F8F2] rounded-2xl max-w-7xl px-18 py-10 flex gap-10">
         {/* LEFT: Poster + Categories */}
         <div className="flex flex-col items-center">

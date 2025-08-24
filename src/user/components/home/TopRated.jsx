@@ -10,8 +10,8 @@ const TopRated = () => {
   }, [])
 
   return (
-    <div className="w-[full] h-screen pt-16 pb-10 px-20">
-      <h2 className="font-semibold text-4xl mb-10 text-center">
+    <div className="w-[full] h-screen pt-34 px-20">
+      <h2 className="font-semibold text-4xl mb-12 text-center">
         Top Rated Shows
       </h2>
 

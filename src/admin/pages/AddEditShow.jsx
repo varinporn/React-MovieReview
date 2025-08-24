@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Breadcrumbs from '../components/Breadcrumbs'
 
-const FormMovie = () => {
+const AddEditShow = () => {
+  const { id } = useParams()
+  const isEditMode = !!id
+
   const showCategories = ['Movies', 'TV Shows']
   const platformList = [
     'Netflix',
@@ -9,13 +13,12 @@ const FormMovie = () => {
     'Prime Video',
     'Disney+ Hotstar (Thailand)',
     'WeTV',
-    'Apple TV'
+    'Apple TV',
   ]
 
   const [form, setForm] = useState({
     title: '',
     description: '',
-    genres: '',
     category: '',
     year: '',
     platform: '',
@@ -23,7 +26,6 @@ const FormMovie = () => {
     duration: '',
     imageUrl: '',
     director: '',
-    stars: '',
   })
 
   const [touched, setTouched] = useState({
@@ -36,23 +38,54 @@ const FormMovie = () => {
     imageUrl: false,
   })
 
-  const onBlur = (field) => {
-    setTouched((prev) => ({ ...prev, [field]: true }))
-    setForm((prev) => ({ ...prev, [field]: prev[field].trim() }))
-  }
-
-  // Genres array state
   const [genresList, setGenresList] = useState([])
   const [genresInput, setGenresInput] = useState('')
+  const [starsList, setStarsList] = useState([])
+  const [starsInput, setStarsInput] = useState('')
 
-  const removeGenre = (indexToRemove) => {
-    setGenresList((prev) => prev.filter((_, idx) => idx !== indexToRemove))
+  // โหลดข้อมูลโชว์เดิมตอน edit
+  useEffect(() => {
+    if (!isEditMode) return
+    fetch(`http://localhost:5001/shows/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setForm({
+          title: data.title || '',
+          description: data.description || '',
+          category: data.category || '',
+          year: data.year || '',
+          platform: data.platform || '',
+          episode: data.episode || '',
+          duration: data.duration || '',
+          imageUrl: data.imageUrl || '',
+          director: data.director || '',
+        })
+        setGenresList(data.genres || [])
+        setStarsList(data.stars || [])
+      })
+  }, [id, isEditMode])
+
+  const onBlur = (field) => {
+    setTouched((prev) => ({ ...prev, [field]: true }))
+    setForm((prev) => ({ ...prev, [field]: prev[field]?.trim() }))
   }
 
-  const handleGenreInputChange = (e) => {
-    setGenresInput(e.target.value)
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setForm((prev) => {
+      let updated = { ...prev, [name]: value }
+
+      if (name === 'category') {
+        if (value === 'Movies') updated.episode = ''
+        else if (value === 'TV Shows') updated.duration = ''
+      }
+
+      return updated
+    })
   }
 
+  // Genres handlers
+  const handleGenreInputChange = (e) => setGenresInput(e.target.value)
   const handleGenreInputKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault()
@@ -63,14 +96,10 @@ const FormMovie = () => {
       }
     }
   }
+  const removeGenre = (index) =>
+    setGenresList((prev) => prev.filter((_, i) => i !== index))
 
-  // Stars array state
-  const [starsList, setStarsList] = useState([])
-  const [starsInput, setStarsInput] = useState('')
-
-  const removeStar = (indexToRemove) => {
-    setStarsList((prev) => prev.filter((_, idx) => idx !== indexToRemove))
-  }
+  // Stars handlers
   const handleStarsInputChange = (e) => setStarsInput(e.target.value)
   const handleStarsInputKeyDown = (e) => {
     if (e.key === 'Enter') {
@@ -82,31 +111,8 @@ const FormMovie = () => {
       }
     }
   }
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => {
-      let updated = { ...prev, [name]: value }
-
-      if (name === 'category') {
-        if (value === 'Movies') {
-          updated.episode = ''
-        } else if (value === 'TV Shows') {
-          updated.duration = ''
-        }
-      }
-
-      return updated
-    })
-
-    if (name === 'genres') {
-      const genres = value
-        .split('\n')
-        .map((g) => g.trim())
-        .filter((g) => g.length > 0)
-      setGenresList(genres)
-    }
-  }
+  const removeStar = (index) =>
+    setStarsList((prev) => prev.filter((_, i) => i !== index))
 
   const isFormValid =
     form.title &&
@@ -117,48 +123,40 @@ const FormMovie = () => {
     starsList.length > 0 &&
     form.imageUrl
 
-  const handleShowSubmit = (event) => {
-    event.preventDefault()
+  const handleShowSubmit = (e) => {
+    e.preventDefault()
     if (!isFormValid) return
 
     const payload = { ...form, genres: genresList, stars: starsList }
+    const url = isEditMode
+      ? `http://localhost:5001/shows/${id}`
+      : 'http://localhost:5001/shows'
+    const method = isEditMode ? 'PUT' : 'POST'
 
-    fetch('http://localhost:5001/shows', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    fetch(url, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
       .then((res) => res.json())
       .then(() => {
-        alert('Show uploaded successfully!')
-        setForm({
-          title: '',
-          description: '',
-          genres: '',
-          category: '',
-          year: '',
-          platform: '',
-          episode: '',
-          duration: '',
-          imageUrl: '',
-          director: '',
-          stars: '',
-        })
-        setGenresList([])
-        setGenresInput('')
-        setStarsList([])
-        setStarsInput('')
-        setTouched({
-          title: false,
-          description: false,
-          genres: false,
-          category: false,
-          director: false,
-          stars: false,
-          imageUrl: false,
-        })
+        alert(`Show ${isEditMode ? 'updated' : 'uploaded'} successfully!`)
+        if (!isEditMode) {
+          // reset form เฉพาะ add ใหม่
+          setForm({
+            title: '',
+            description: '',
+            category: '',
+            year: '',
+            platform: '',
+            episode: '',
+            duration: '',
+            imageUrl: '',
+            director: '',
+          })
+          setGenresList([])
+          setStarsList([])
+        }
       })
   }
 
@@ -167,10 +165,11 @@ const FormMovie = () => {
       <Breadcrumbs
         section="Management"
         link="/admin/dashboard/manage-movie"
-        page="Add Show"
+        page={isEditMode ? 'Edit Show' : 'Create Show'}
       />
-
-      <h1 className="text-2xl font-semibold mt-8 mb-6">Create Show</h1>
+      <h1 className="text-2xl font-semibold mt-8 mb-6">
+        {isEditMode ? 'Edit Show' : 'Create Show'}
+      </h1>
 
       <form onSubmit={handleShowSubmit}>
         <div className="grid grid-cols-2 gap-6">
@@ -179,6 +178,7 @@ const FormMovie = () => {
             <h2 className="text-gray-500 font-semibold mb-4">
               General Information
             </h2>
+
             <div className="space-y-4">
               <div className="space-y-2">
                 <label className="block font-semibold">
@@ -210,14 +210,15 @@ const FormMovie = () => {
                 />
                 {touched.description && !form.description && (
                   <p className="text-red-600 text-sm">
-                    Description is required.
+                    {' '}
+                    Description is required.{' '}
                   </p>
                 )}
               </div>
 
               <div className="flex gap-4">
                 <div className="flex-1 space-y-2">
-                  <label className="block font-semibold">Year </label>
+                  <label className="block font-semibold">Year</label>
                   <input
                     name="year"
                     value={form.year}
@@ -227,7 +228,7 @@ const FormMovie = () => {
                   />
                 </div>
                 <div className="flex-1 space-y-2">
-                  <label className="block font-semibold">Platform </label>
+                  <label className="block font-semibold">Platform</label>
                   <select
                     name="platform"
                     value={form.platform}
@@ -235,9 +236,9 @@ const FormMovie = () => {
                     className="w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   >
                     <option value="">Select Platform</option>
-                    {platformList.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
+                    {platformList.map((p) => (
+                      <option key={p} value={p}>
+                        {p}
                       </option>
                     ))}
                   </select>
@@ -257,31 +258,31 @@ const FormMovie = () => {
                 <select
                   name="category"
                   value={form.category}
-                  onChange={handleChange}
                   onBlur={() => onBlur('category')}
+                  onChange={handleChange}
                   className="w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 >
                   <option value="">Select Category</option>
-                  {showCategories.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {showCategories.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
                     </option>
                   ))}
                 </select>
                 {touched.category && !form.category && (
                   <p className="text-red-600 text-sm">
-                    Show category is required.
+                    {' '}
+                    Show category is required.{' '}
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <label className="block font-semibold">
+                <label className="block font-semibold mt-2">
                   Genres <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
-                  name="genres"
                   value={genresInput}
                   onChange={handleGenreInputChange}
                   onKeyDown={handleGenreInputKeyDown}
@@ -296,24 +297,20 @@ const FormMovie = () => {
                   }}
                   className="w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 />
-
                 {touched.genres && genresList.length === 0 && (
                   <p className="text-red-600 text-sm">Genres is required.</p>
                 )}
-
-                {/* แสดง tag */}
-                <div className="flex flex-wrap gap-2 mt-2 ">
+                <div className="flex flex-wrap gap-2 mt-2">
                   {genresList.map((g, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm select-none"
+                      className="flex items-center bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm"
                     >
-                      <span>{g}</span>
+                      {g}
                       <button
                         type="button"
                         onClick={() => removeGenre(idx)}
-                        className="ml-2 text-indigo-600 hover:text-indigo-900 focus:outline-none"
-                        aria-label={`Remove genre ${g}`}
+                        className="ml-2"
                       >
                         &#10005;
                       </button>
@@ -337,14 +334,15 @@ const FormMovie = () => {
                     min="1"
                     value={form.episode}
                     onChange={handleChange}
-                    className={`w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 border-gray-200 ${
+                    disabled={form.category === 'Movies'}
+                    className={`w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                       form.category === 'Movies'
                         ? 'bg-gray-200 cursor-not-allowed'
-                        : 'bg-white'
+                        : ''
                     }`}
-                    disabled={form.category === 'Movies'}
                   />
                 </div>
+
                 <div className="flex-1 space-y-2">
                   <label className="block font-semibold">Duration</label>
                   <input
@@ -353,15 +351,16 @@ const FormMovie = () => {
                     min="1"
                     value={form.duration}
                     onChange={handleChange}
-                    className={`w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 border-gray-200 ${
+                    disabled={form.category === 'TV Shows'}
+                    className={`w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
                       form.category === 'TV Shows'
                         ? 'bg-gray-200 cursor-not-allowed'
-                        : 'bg-white'
+                        : ''
                     }`}
-                    disabled={form.category === 'TV Shows'}
                   />
                 </div>
               </div>
+
               <div className="space-y-2">
                 <label className="block font-semibold">
                   Image URL <span className="text-red-400">*</span>
@@ -372,30 +371,25 @@ const FormMovie = () => {
                   onChange={handleChange}
                   onBlur={() => onBlur('imageUrl')}
                   className="w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  type="text"
                 />
                 {touched.imageUrl && !form.imageUrl && (
                   <p className="text-red-600 text-sm">Image URL is required.</p>
                 )}
-                <div>
-                  {form.imageUrl && (
-                    <div className="mt-2">
-                      <img
-                        src={form.imageUrl}
-                        alt="Preview"
-                        className="w-30 h-auto rounded-md border"
-                      />
-                    </div>
-                  )}
-                </div>
+                {form.imageUrl && (
+                  <img
+                    src={form.imageUrl}
+                    alt="Preview"
+                    className="mt-2 w-30 h-auto rounded-md border"
+                  />
+                )}
               </div>
             </div>
           </div>
 
           {/* Cast & Crew */}
-          <div className="bg-white p-6 rounded-lg shadow min-h-fit">
+          <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-gray-500 font-semibold mb-4">Cast & Crew</h2>
-            <div className="space-y-4">
+            <div className='space-y-4'>
               <div className="space-y-2">
                 <label className="block font-semibold">
                   Director(s) <span className="text-red-400">*</span>
@@ -403,10 +397,9 @@ const FormMovie = () => {
                 <input
                   name="director"
                   value={form.director}
-                  onChange={handleChange}
                   onBlur={() => onBlur('director')}
+                  onChange={handleChange}
                   className="w-full border border-gray-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  type="text"
                 />
                 {touched.director && !form.director && (
                   <p className="text-red-600 text-sm">
@@ -414,16 +407,12 @@ const FormMovie = () => {
                   </p>
                 )}
               </div>
-
               <div className="space-y-2">
-                <label className="block font-semibold">
+                <label className="block font-semibold mt-2">
                   Stars <span className="text-red-400">*</span>
                 </label>
-
-                {/* input สำหรับเพิ่มชื่อ stars */}
                 <input
                   type="text"
-                  name="stars"
                   value={starsInput}
                   onChange={handleStarsInputChange}
                   onKeyDown={handleStarsInputKeyDown}
@@ -441,20 +430,17 @@ const FormMovie = () => {
                 {touched.stars && starsList.length === 0 && (
                   <p className="text-red-600 text-sm">Star(s) is required.</p>
                 )}
-
-                {/* แสดง tags */}
                 <div className="flex flex-wrap gap-2 mt-2">
-                  {starsList.map((star, idx) => (
+                  {starsList.map((s, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm select-none"
+                      className="flex items-center bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm"
                     >
-                      <span>{star}</span>
+                      {s}
                       <button
                         type="button"
                         onClick={() => removeStar(idx)}
-                        className="ml-2 text-indigo-600 hover:text-indigo-900 focus:outline-none"
-                        aria-label={`Remove star ${star}`}
+                        className="ml-2"
                       >
                         &#10005;
                       </button>
@@ -478,10 +464,12 @@ const FormMovie = () => {
             type="submit"
             disabled={!isFormValid}
             className={`py-1 px-4 rounded-md text-white ${
-              isFormValid ? 'bg-[#7942FC] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'
+              isFormValid
+                ? 'bg-[#7942FC] cursor-pointer'
+                : 'bg-gray-400 cursor-not-allowed'
             }`}
           >
-            Save
+            {isEditMode ? 'Update' : 'Save'}
           </button>
         </div>
       </form>
@@ -489,4 +477,4 @@ const FormMovie = () => {
   )
 }
 
-export default FormMovie
+export default AddEditShow

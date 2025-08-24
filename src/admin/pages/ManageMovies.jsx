@@ -57,7 +57,7 @@ const ManageMovies = () => {
 
         <Link to={'/admin/dashboard/create-show'}>
           <button className="text-[#BD93F9] font-medium py-1 px-4 border border-[#BD93F9] rounded-lg cursor-pointer hover:bg-[#F1E8FF] hover:text-[#AA6FFF] hover:border-[#AA6FFF] active:bg-[#F9F5FF] ">
-            Add Show
+            Create New Show
           </button>
         </Link>
       </div>
