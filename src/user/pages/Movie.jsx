@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import List from '../components/List'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const Movie = () => {
   const [shows, setShows] = useState([])
-   const getAllMovies = async () => {
-     try {
-       const res = await fetch('http://localhost:5001/shows')
-       const data = await res.json()
-       setShows(data.filter((item) => item.category === 'Movies'))
-     } catch (error) {
-       console.error('Failed to fetch movies:', error)
-     }
-   }
- 
-   useEffect(() => {
-     getAllMovies()
-   }, [])
+  const [loading, setLoading] = useState(true)
+
+  const getAllMovies = async () => {
+    try {
+      setLoading(true)
+      const res = await fetch('http://localhost:5001/shows')
+      const data = await res.json()
+      setShows(data.filter((item) => item.category === 'Movies'))
+    } catch (error) {
+      console.error('Failed to fetch movies:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    getAllMovies()
+  }, [])
 
   return (
     <div className="w-full">
       <div className="my-[150px] mx-auto bg-[#F8F8F2] rounded-2xl max-w-7xl px-18 py-10">
-        <List selectedMenu="Movies" shows={shows} />
+        {loading ? <LoadingSpinner/> : <List selectedMenu="Movies" shows={shows} />}
       </div>
     </div>
   )

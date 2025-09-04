@@ -1,38 +1,72 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-// import { useNavigate } from 'react-router-dom'
-// import toast from 'react-hot-toast'
+import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import { useUser } from '../../context/UserContext.jsx'
 
 const Login = () => {
-
+  const navigate = useNavigate()
+  const [form, setForm] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
+  const { setUser } = useUser()
+
+  const handleChange = (field, value) => {
+    setForm((prev) => ({ ...prev, [field]: value }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      const res = await fetch('http://localhost:5001/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        localStorage.setItem('token', data.accessToken)
+        localStorage.setItem('user', JSON.stringify(data.user))
+
+        setUser(data.user)
+
+        toast.success('Logged in successfully!')
+        navigate('/')
+      } else {
+        toast.error(data)
+      }
+    } catch (err) {
+      console.error(err)
+      toast.error('Something went wrong')
+    }
+  }
 
   return (
-    <div className="bg-white rounded-2xl shadow p-8 h-full w-[35%] mx-auto my-36 text-[#000000]">
+    <div className="bg-white rounded-2xl shadow py-10 px-2 h-[500px] w-[30%] mx-auto my-36 text-[#000000]">
       <div className="px-10 space-y-8 pt-4">
         <div className="space-y-4">
           <h1 className="font-semibold text-3xl text-[#1E1B2E]">
             StreamTeller.
           </h1>
           <p className="text-2xl font-light text-[#1E1B2E]">
-            Create an account
+            Log in to your account
           </p>
         </div>
 
-        <form className="space-y-2">
-          {/* Username */}
+        <form onSubmit={handleSubmit} className="space-y-2">
           <div className="space-y-1">
             <label className="text-[#484848] block text-sm font-medium">
-              Username <span className="text-red-500">*</span>
+              Email <span className="text-red-500">*</span>
             </label>
             <input
-              type="text"
+              type="email"
+              value={form.email}
+              onChange={(e) => handleChange('email', e.target.value)}
               required
               className="border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
             />
           </div>
 
-          {/* Password */}
           <div className="space-y-1">
             <label className="text-[#484848] block text-sm font-medium">
               Password <span className="text-red-500">*</span>
@@ -40,8 +74,10 @@ const Login = () => {
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
+                value={form.password}
+                onChange={(e) => handleChange('password', e.target.value)}
                 required
-                className=" border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
+                className="border-[#E4E4E4] mt-1 w-full border rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[#FF79C6] text-sm placeholder-[#A2A2A2]"
               />
               <button
                 type="button"
@@ -85,7 +121,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="bg-[#FF79C6] hover:bg-[#FF94D2] focus:bg-[#FF88CC] w-full py-3 rounded-full mt-4 cursor-pointer  text-[#FFFFFF]"
+            className="bg-[#FF79C6] hover:bg-[#FF94D2] focus:bg-[#FF88CC] w-full py-3 rounded-full mt-4 cursor-pointer text-[#FFFFFF]"
           >
             Log In
           </button>

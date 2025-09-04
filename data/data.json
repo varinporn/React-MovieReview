@@ -269,32 +269,39 @@
   ],
   "users": [
     {
-      "id": "1",
-      "username": "test1",
-      "email": "test1@mail.com",
-      "password": "Test1234!",
-      "reviews": [
-        {
-          "id": "101"
-        }
+      "email": "test@mail.com",
+      "password": "$2a$10$FJY0khEjv1LASmcCHzaUf.fHQElhCbhp8QrVPdp3vmIDovoW6zcFK",
+      "username": "test",
+      "id": 1
+    },
+    {
+      "email": "testtesttest@mail.com",
+      "password": "$2a$10$7s2XV.GNWWSodPeM/2x6Q./qfIlE3kcEFVAR6dMcrdwO6Rbr9UdH.",
+      "username": "bvrpn",
+      "id": 2,
+      "watchlist": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
       ]
     },
     {
-      "id": "2",
-      "username": "test2",
-      "email": "test2@mail.com",
-      "password": "Test1234!",
-      "reviews": [
-        {
-          "id": "102"
-        }
+      "email": "test@gmail.com",
+      "password": "$2a$10$KU1i1NS0iEObCt9XUZ10BOqFXQ7.Cc/J1NRfpJgNwnHz4BCxLe8RK",
+      "username": "Test",
+      "id": 3,
+      "watchlist": [
+        "3",
+        "4",
+        "7"
       ]
-    },
-    {
-      "id": "a29d",
-      "username": "aaaa",
-      "email": "aaa@mail.com",
-      "password": "Aaaaa1111!"
     }
   ],
   "reviews": [

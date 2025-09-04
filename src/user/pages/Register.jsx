@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 const Register = () => {
@@ -25,7 +24,7 @@ const Register = () => {
 
   const onBlur = (field) => {
     setTouched((prev) => ({ ...prev, [field]: true }))
-    setForm((prev) => ({ ...prev, [field]: prev[field]?.trim() }))
+    setForm((prev) => ({ ...prev, [field]: prev[field]?.trim() || '' }))
   }
 
   const onChange = (field, value) => {
@@ -41,17 +40,22 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!isPasswordValid || form.password !== form.confirmPassword) {
-      toast.error('Password invalid or does not match')
+    if (!isPasswordValid(form.password)) {
+      toast.error(
+        'Password must contain 8+ chars, uppercase, lowercase, number & special char'
+      )
+      return
+    }
+
+    if (form.password !== form.confirmPassword) {
+      toast.error('Passwords do not match')
       return
     }
 
     try {
-      const res = await fetch('http://localhost:5001/users', {
+      const res = await fetch('http://localhost:5001/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: form.username,
           email: form.email,
@@ -61,18 +65,19 @@ const Register = () => {
 
       if (res.ok) {
         toast.success('Successfully registered!')
-        navigate('/')
+        navigate('/login')
       } else {
-        toast.error('Registration failed')
-        alert('error')
+        const data = await res.json()
+        toast.error(data?.message || 'Registration failed')
       }
     } catch (err) {
       console.error(err)
+      toast.error('Server error')
     }
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow p-8 h-full w-[35%] mx-auto my-36 text-[#000000]">
+    <div className="bg-white rounded-2xl shadow py-8 px-6 h-full w-[35%] mx-auto my-36 text-[#000000]">
       <div className="px-10 space-y-8 pt-4">
         <div className="space-y-4">
           <h1 className="font-semibold text-3xl text-[#1E1B2E]">

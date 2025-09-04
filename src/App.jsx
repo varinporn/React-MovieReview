@@ -11,7 +11,7 @@ function App() {
     <div className="relative min-h-screen bg-[#1E1B2E] text-white overflow-hidden">
       <Toaster position="bottom-right" reverseOrder={false} />
       <Navbar />
-      <main className="relative z-0">
+      <main className="relative z-0 min-h-screen">
         <Outlet />
       </main>
       {!isHome && <Footer />}
