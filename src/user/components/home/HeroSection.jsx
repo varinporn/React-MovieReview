@@ -21,8 +21,8 @@ const HeroSection = () => {
         <h1 className="text-5xl font-bold leading-tight text-white mb-6">
           The Voice <br /> Behind the Screen.
         </h1>
-        <Link to={'/trending'} className="px-6 py-2 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition active:bg-gray-400">
-          Explore Trending
+        <Link to={'/all'} className="px-6 py-2 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition active:bg-gray-400">
+          Explore More
         </Link>
       </div>
     </div>
