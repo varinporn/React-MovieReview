@@ -5,7 +5,7 @@ A React-based web application for browsing and managing movies. Users can create
 ## Features
 
 - **User Authentication**
-  - Sign up with an encrypted password
+  - Sign up with an encrypted password using json-server-auth
   - Login / Logout
 - **CRUD Operations for Shows**
   - Create, Read, Update, Delete shows
