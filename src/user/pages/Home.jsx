@@ -10,10 +10,18 @@ const Home = () => {
 
   const [shows, setShows] = useState([])
 
+  const getShows = async () => {
+    try {
+      const res = await fetch('http://localhost:5001/shows')
+      const data = await res.json()
+      setShows(data.slice(0, 4))
+    } catch (error) {
+      console.error('Failed to fetch shows:', error)
+    }
+  }
+
   useEffect(() => {
-    fetch('http://localhost:5001/shows')
-      .then((res) => res.json())
-      .then((data) => setShows(data.slice(0, 4)))
+    getShows()
   }, [])
 
   return (
@@ -63,22 +71,6 @@ const Home = () => {
             Top Rated Shows
           </h2>
           <GridView shows={shows} page="landing" />
-        </motion.div>
-      </section>
-
-      {/* Latest Review Section */}
-      <section className="h-screen snap-start w-full pt-34 px-20 bg-[#F8F8F2]">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="h-full"
-        >
-          <h2 className="font-semibold text-4xl mb-12 text-center text-[#1E1B2E]">
-            Latest Review
-          </h2>
-          <ReviewCard />
         </motion.div>
       </section>
     </div>

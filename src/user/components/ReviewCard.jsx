@@ -1,73 +1,55 @@
 import React from 'react'
 import { FaStar } from 'react-icons/fa6'
 
-const ReviewCard = () => {
+const ReviewCard = ({ reviews }) => {
+
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="shadow-lg bg-white py-8 px-4 md:m-5 rounded-lg">
-        <div className="space-y-6">
-          <div className="text-amber-400 flex gap-2 items-center">
-            <FaStar />
-            <span>7.0</span>
+    <div className="overflow-x-auto py-4">
+      <div className="flex gap-4">
+        {reviews.map((review) => (
+          <div
+            key={review.id}
+            className="max-w-90 flex-shrink-0 shadow-lg bg-white py-6 px-4 rounded-lg"
+          >
+            <div className="space-y-2">
+              <div className="text-amber-400 flex gap-2 items-center">
+                <FaStar />
+                <span>{review.rating}</span>
+              </div>
+              <div className="text-black">
+                <h3 className="mb-4 font-medium text-lg">{review.title}</h3>
+                <p className="mb-5">{review.message}</p>
+
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center space-x-2">
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect width="30" height="30" rx="15" fill="#EADDFF" />
+                      <path
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M19.5002 12C19.5002 14.4853 17.4855 16.5 15.0002 16.5C12.5149 16.5 10.5002 14.4853 10.5002 12C10.5002 9.51472 12.5149 7.5 15.0002 7.5C17.4855 7.5 19.5002 9.51472 19.5002 12ZM18.0002 12C18.0002 13.6569 16.657 15 15.0002 15C13.3433 15 12.0002 13.6569 12.0002 12C12.0002 10.3431 13.3433 9 15.0002 9C16.657 9 18.0002 10.3431 18.0002 12Z"
+                        fill="#4F378A"
+                      />
+                      <path
+                        d="M15.0002 18.75C10.1444 18.75 6.00714 21.6213 4.43115 25.644C4.81507 26.0253 5.21951 26.3859 5.64265 26.724C6.8162 23.0308 10.4977 20.25 15.0002 20.25C19.5027 20.25 23.1842 23.0308 24.3577 26.7241C24.7809 26.3859 25.1853 26.0253 25.5692 25.644C23.9932 21.6213 19.856 18.75 15.0002 18.75Z"
+                        fill="#4F378A"
+                      />
+                    </svg>
+
+                    <h5 className="text-base font-medium">testuser</h5>
+                  </div>
+                  <span className="text-sm text-[#C8C8C8]">{review.date}</span>
+                </div>
+              </div>
+            </div>
           </div>
-
-          {/* text */}
-          <div className="mt-8 text-black">
-            <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              eos cupiditate laborum vitae reprehenderit ullam, voluptatem
-              voluptatibus aut assumenda! Fugit, nesciunt quidem cumque porro
-              quis laboriosam quisquam totam pariatur voluptas.
-            </p>
-
-            <h5 className="text-lg font-medium">Mark Lee</h5>
-            <p className="text-base">CEO, SM Company</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="shadow-lg bg-white py-8 px-4 md:m-5 rounded-lg">
-        <div className="space-y-6">
-          <div className="text-amber-400 flex gap-2 items-center">
-            <FaStar />
-            <span>7.0</span>
-          </div>
-
-          {/* text */}
-          <div className="mt-8 text-black">
-            <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              eos cupiditate laborum vitae reprehenderit ullam, voluptatem
-              voluptatibus aut assumenda! Fugit, nesciunt quidem cumque porro
-              quis laboriosam quisquam totam pariatur voluptas.
-            </p>
-
-            <h5 className="text-lg font-medium">Mark Lee</h5>
-            <p className="text-base">CEO, SM Company</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="shadow-lg bg-white py-8 px-4 md:m-5 rounded-lg">
-        <div className="space-y-6">
-          <div className="text-amber-400 flex gap-2 items-center">
-            <FaStar />
-            <span>7.0</span>
-          </div>
-
-          {/* text */}
-          <div className="mt-8 text-black">
-            <p className="mb-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-              eos cupiditate laborum vitae reprehenderit ullam, voluptatem
-              voluptatibus aut assumenda! Fugit, nesciunt quidem cumque porro
-              quis laboriosam quisquam totam pariatur voluptas.
-            </p>
-
-            <h5 className="text-lg font-medium">Mark Lee</h5>
-            <p className="text-base">CEO, SM Company</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   )

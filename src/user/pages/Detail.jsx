@@ -3,9 +3,11 @@ import { useLoaderData } from 'react-router-dom'
 import { Star, StarHalf, StarIcon } from 'lucide-react'
 import { useUser } from '../../context/UserContext.jsx'
 import toast from 'react-hot-toast'
+import ReviewCard from '../components/ReviewCard.jsx'
 
 const Detail = () => {
   const { user, setUser } = useUser()
+  const [reviews, setReviews] = useState([])
   const data = useLoaderData()
 
   const {
@@ -23,6 +25,22 @@ const Detail = () => {
     rating,
     imageUrl,
   } = data
+
+  const getReviews = async () => {
+    try {
+      const res = await fetch('http://localhost:5001/reviews')
+      const data = await res.json()
+      const filteredReviews = data.filter(
+        (review) => Number(review.showId) === Number(id)
+      )
+      setReviews(filteredReviews)
+    } catch (error) {
+      console.error('Failed to fetch reviews:', error)
+    }
+  }
+
+  const [showAll, setShowAll] = useState(false)
+  const visibleReviews = showAll ? reviews : reviews.slice(0, 5)
 
   const logos = {
     Netflix:
@@ -48,6 +66,8 @@ const Detail = () => {
     if (user && user.watchlist?.includes(id)) {
       setAdded(true)
     }
+
+    getReviews()
   }, [user, id])
 
   const handleAddToWatchlist = async () => {
@@ -107,7 +127,7 @@ const Detail = () => {
 
   return (
     <div className="h-full text-black">
-      <div className="my-[150px] mx-auto bg-[#F8F8F2] rounded-2xl max-w-7xl px-18 py-10 flex gap-10">
+      <div className="mt-[150px] mx-auto bg-[#F8F8F2] rounded-2xl max-w-7xl px-18 py-10 flex gap-10">
         {/* LEFT: Poster + Categories */}
         <div className="flex flex-col items-center">
           <img
@@ -268,6 +288,32 @@ const Detail = () => {
               )}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Reviews */}
+      <div className="mt-10 my-[80px] px-2 py-10 mx-auto max-w-7xl h-full">
+        <h2 className="text-2xl font-semibold text-white mb-3">Reviews</h2>
+        {reviews && reviews.length > 0 ? (
+          <ReviewCard reviews={visibleReviews} />
+        ) : (
+          <div className="text-white text-xl flex items-center justify-center mt-12 mb-10">
+            <p>No Review</p>
+          </div>
+        )}
+
+        {/* See All */}
+        <div className="mt-4 text-right min-h-[28px]">
+          {!showAll && reviews.length > 5 ? (
+            <button
+              onClick={() => setShowAll(true)}
+              className="text-[#574AA0] font-medium hover:underline"
+            >
+              See All
+            </button>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </div>
