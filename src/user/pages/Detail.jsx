@@ -79,6 +79,32 @@ const Detail = () => {
     }
   }
 
+  const removeFromWatchList = async () => {
+    try {
+      const updatedWatchlist = (user.watchlist || []).filter(
+        (item) => item !== id
+      )
+
+      const res = await fetch(`http://localhost:5001/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ watchlist: updatedWatchlist }),
+      })
+
+      if (!res.ok) throw new Error('Failed to update watchlist')
+
+      const updatedUser = await res.json()
+      setUser(updatedUser)
+      setAdded(false)
+      toast.success(`${title} removed from your watchlist!`)
+    } catch (error) {
+      console.error(error)
+      toast.error('Something went wrong')
+    }
+  }
+
   return (
     <div className="h-full text-black">
       <div className="my-[150px] mx-auto bg-[#F8F8F2] rounded-2xl max-w-7xl px-18 py-10 flex gap-10">
@@ -174,7 +200,7 @@ const Detail = () => {
           <div className="flex gap-3 mt-6">
             <button
               className="flex items-center gap-2 px-4 py-2 bg-[#574AA0] text-white rounded-full text-sm hover:bg-[#5a3fd9] cursor-pointer"
-              onClick={handleAddToWatchlist}
+              onClick={added ? removeFromWatchList : handleAddToWatchlist}
             >
               {added ? (
                 <svg
