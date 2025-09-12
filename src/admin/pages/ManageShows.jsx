@@ -58,7 +58,7 @@ const ManageShows = () => {
       <div className="mx-6 mt-12 flex justify-between">
         <h2 className="font-semibold text-3xl text-black">Shows</h2>
 
-        <Link to={'/admin/dashboard/create-show'}>
+        <Link to={'/admin/create-show'}>
           <button className="text-[#BD93F9] font-medium py-1 px-4 border border-[#BD93F9] rounded-lg cursor-pointer hover:bg-[#F1E8FF] hover:text-[#AA6FFF] hover:border-[#AA6FFF] active:bg-[#F9F5FF] ">
             Create New Show
           </button>
@@ -113,7 +113,7 @@ const ManageShows = () => {
                   {/* edit btn */}
 
                   <Link
-                    to={`/admin/dashboard/edit-show/${show.id}`}
+                    to={`/admin/edit-show/${show.id}`}
                     className="cursor-pointer"
                   >
                     <svg

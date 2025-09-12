@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useUser } from '../../context/UserContext.jsx'
 import { Link } from 'react-router-dom'
+import WatchlistButton from './WatchListButton'
 
-const MovieList = ({ shows }) => {
+const ListView = ({ shows }) => {
+  const { user, setUser } = useUser()
+
+  // แยก state added สำหรับแต่ละ show
+  const [addedList, setAddedList] = useState({})
+
+  useEffect(() => {
+    if (user?.watchlist) {
+      const newAddedList = {}
+      shows.forEach((show) => {
+        newAddedList[show.id] = user.watchlist.includes(show.id)
+      })
+      setAddedList(newAddedList)
+    }
+  }, [user, shows])
+
+  const setAddedForShow = (id, value) => {
+    setAddedList((prev) => ({ ...prev, [id]: value }))
+  }
+
   return (
     <div className="space-y-3">
       {shows.map((show) => (
-        <div key={show._id}
+        <div
+          key={show.id}
           className="w-[90%] max-w-5xl shadow-md rounded-xl px-6 py-4 flex items-start gap-6 bg-white"
         >
           {/* Image */}
@@ -21,7 +43,7 @@ const MovieList = ({ shows }) => {
           <div className="flex-1 space-y-2 mt-4">
             {/* Title and Year */}
             <div className="flex items-center justify-between pr-10">
-          <Link to={`/title/${show._id}`}>
+              <Link to={`/title/${show.id}`}>
                 <h3 className="text-xl font-semibold">{show.title}</h3>
               </Link>
               <span className="text-gray-500">{show.year || '-'}</span>
@@ -42,36 +64,16 @@ const MovieList = ({ shows }) => {
                 />
               </svg>
               <span>{show.rating}</span>
-              <button className="ml-4 flex items-center gap-1 text-sm text-[#574AA0]">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 18 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.6375 13.3687L9 11.9438L11.3625 13.3875L10.7437 10.6875L12.825 8.8875L10.0875 8.64375L9 6.09375L7.9125 8.625L5.175 8.86875L7.25625 10.6875L6.6375 13.3687ZM4.36875 16.5L5.5875 11.2313L1.5 7.6875L6.9 7.21875L9 2.25L11.1 7.21875L16.5 7.6875L12.4125 11.2313L13.6313 16.5L9 13.7063L4.36875 16.5Z"
-                    fill="#574AA0"
-                  />
-                </svg>
-                Rate
-              </button>
-              <button className="ml-2 flex items-center gap-1 text-sm text-[#574AA0]">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.33325 11.3333H8.66659V8.66665H11.3333V7.33331H8.66659V4.66665H7.33325V7.33331H4.66659V8.66665H7.33325V11.3333ZM7.99992 14.6666C7.0777 14.6666 6.21103 14.4944 5.39992 14.15C4.58881 13.7944 3.88325 13.3166 3.28325 12.7166C2.68325 12.1166 2.20547 11.4111 1.84992 10.6C1.50547 9.78887 1.33325 8.9222 1.33325 7.99998C1.33325 7.07776 1.50547 6.21109 1.84992 5.39998C2.20547 4.58887 2.68325 3.88331 3.28325 3.28331C3.88325 2.68331 4.58881 2.21109 5.39992 1.86665C6.21103 1.51109 7.0777 1.33331 7.99992 1.33331C8.92214 1.33331 9.78881 1.51109 10.5999 1.86665C11.411 2.21109 12.1166 2.68331 12.7166 3.28331C13.3166 3.88331 13.7888 4.58887 14.1333 5.39998C14.4888 6.21109 14.6666 7.07776 14.6666 7.99998C14.6666 8.9222 14.4888 9.78887 14.1333 10.6C13.7888 11.4111 13.3166 12.1166 12.7166 12.7166C12.1166 13.3166 11.411 13.7944 10.5999 14.15C9.78881 14.4944 8.92214 14.6666 7.99992 14.6666ZM7.99992 13.3333C9.48881 13.3333 10.7499 12.8166 11.7833 11.7833C12.8166 10.75 13.3333 9.48887 13.3333 7.99998C13.3333 6.51109 12.8166 5.24998 11.7833 4.21665C10.7499 3.18331 9.48881 2.66665 7.99992 2.66665C6.51103 2.66665 5.24992 3.18331 4.21659 4.21665C3.18325 5.24998 2.66659 6.51109 2.66659 7.99998C2.66659 9.48887 3.18325 10.75 4.21659 11.7833C5.24992 12.8166 6.51103 13.3333 7.99992 13.3333Z"
-                    fill="#574AA0"
-                  />
-                </svg>
-                Add to watch list
-              </button>
+
+              <WatchlistButton
+                id={show.id}
+                title={show.title}
+                user={user}
+                setUser={setUser}
+                added={addedList[show.id] || false}
+                setAdded={(value) => setAddedForShow(show.id, value)}
+                variant="list"
+              />
             </div>
 
             {/* Description */}
@@ -89,7 +91,7 @@ const MovieList = ({ shows }) => {
 
           {/* Info Icon */}
           <div className="pt-1.5">
-            <Link to={`/title/${show._id}`}>
+            <Link to={`/title/${show.id}`}>
               <svg
                 width="22"
                 height="22"
@@ -110,4 +112,4 @@ const MovieList = ({ shows }) => {
   )
 }
 
-export default MovieList
+export default ListView

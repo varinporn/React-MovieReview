@@ -74,7 +74,7 @@
         "Kim Da-mi",
         "Roh Jeong-eui"
       ],
-      "rating": "8.5",
+      "rating": "8.0",
       "imageUrl": "https://i0.wp.com/www.korseries.com/wp-content/uploads/2021/11/Our-Beloved-Summer-SBS-Poster-19112021.jpg?resize=750%2C1089&ssl=1"
     },
     {
@@ -99,7 +99,7 @@
         "Geraldine James",
         "R.H. Thomson"
       ],
-      "rating": "-",
+      "rating": "7.0",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BZWUzZGM1OTYtMWUyNS00NTBmLTg1YTMtOTllMWFmYjk2NGU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     },
     {
@@ -126,7 +126,7 @@
         "Don Rickles",
         "Jim Varney"
       ],
-      "rating": "-",
+      "rating": "5.0",
       "imageUrl": "https://i.redd.it/what-are-the-favorites-best-movies-and-posters-ts1-ts4-v0-jtqe18fklt1f1.jpg?width=1000&format=pjpg&auto=webp&s=a46e8f81735c3ef8ce6c240099d0946c4e8c7c73"
     },
     {
@@ -155,7 +155,7 @@
         "Don Rickles",
         "Jim Varney"
       ],
-      "rating": "-",
+      "rating": "8.0",
       "imageUrl": "https://i.redd.it/2vtexflofy2e1.jpeg"
     },
     {
@@ -292,7 +292,7 @@
       "date": "12-09-2025",
       "title": "So funny",
       "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
-      "rating": 10,
+      "rating": 9,
       "id": 6
     },
     {
@@ -321,6 +321,33 @@
       "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
       "rating": 7,
       "id": 9
+    },
+    {
+      "userId": "6",
+      "showId": "6",
+      "date": "13-09-2025",
+      "title": "",
+      "message": "",
+      "rating": 8,
+      "id": 10
+    },
+    {
+      "userId": "6",
+      "showId": "4",
+      "date": "13-09-2025",
+      "title": "",
+      "message": "",
+      "rating": 7,
+      "id": 11
+    },
+    {
+      "userId": "6",
+      "showId": "5",
+      "date": "13-09-2025",
+      "title": "",
+      "message": "",
+      "rating": 5,
+      "id": 12
     }
   ]
 }

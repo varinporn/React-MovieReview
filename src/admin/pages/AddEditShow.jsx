@@ -143,7 +143,7 @@ const AddEditShow = () => {
       .then((res) => res.json())
       .then(() => {
         toast.success(`Show ${isEditMode ? 'updated' : 'uploaded'} successfully!`)
-        navigate('/admin/dashboard/manage-shows')
+        navigate('/admin/manage-shows')
         if (!isEditMode) {
           setForm({
             title: '',
@@ -166,7 +166,7 @@ const AddEditShow = () => {
     <div className="text-black my-10 mx-8 max-w-screen">
       <Breadcrumbs
         section="Management"
-        link="/admin/dashboard/manage-movie"
+        link="/admin/manage-shows"
         page={isEditMode ? 'Edit Show' : 'Create Show'}
       />
       <h1 className="text-2xl font-semibold mt-8 mb-6">

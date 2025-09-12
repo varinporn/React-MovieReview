@@ -7,7 +7,6 @@ import WatchList from '../user/pages/WatchList'
 import Detail from '../user/pages/Detail'
 import AllList from '../user/pages/AllList'
 import DashboardLayout from '../admin/pages/DashboardLayout'
-import Dashboard from '../admin/pages/Dashboard'
 import ManageShows from '../admin/pages/ManageShows'
 import AddEditShow from '../admin/pages/AddEditShow'
 import Register from '../user/pages/Register'
@@ -35,23 +34,19 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/admin/dashboard',
+    path: '/admin',
     element: <DashboardLayout />,
     children: [
       {
-        path: '/admin/dashboard',
-        element: <Dashboard />,
-      },
-      {
-        path: '/admin/dashboard/manage-shows',
+        path: '/admin/manage-shows',
         element: <ManageShows />,
       },
       {
-        path: '/admin/dashboard/create-show',
+        path: '/admin/create-show',
         element: <AddEditShow />,
       },
       {
-        path: '/admin/dashboard/edit-show/:id',
+        path: '/admin/edit-show/:id',
         element: <AddEditShow />,
         loader: ({ params }) =>
           fetch(`http://localhost:5001/shows/${params.id}`),
