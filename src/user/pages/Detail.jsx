@@ -188,7 +188,7 @@ const Detail = () => {
         body: JSON.stringify({ rating: avg.toFixed(1) }),
       })
 
-      await fetchShow(showId) // 👈 รีเฟรชค่า show หลังอัปเดต rating
+      await fetchShow(showId) 
     } catch (err) {
       console.error('Failed to update average rating:', err)
     }
@@ -382,7 +382,7 @@ const Detail = () => {
 
             {duration && (
               <p>
-                <strong>Duration</strong>{' '}
+                <strong>Duration</strong>
                 <span>{transformDuration(duration)}</span>
               </p>
             )}
