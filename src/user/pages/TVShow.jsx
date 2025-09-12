@@ -3,13 +3,15 @@ import List from '../components/List'
 import LoadingSpinner from '../components/LoadingSpinner'
 
 const Show = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const [shows, setShows] = useState([])
   const [loading, setLoading] = useState(false)
 
   const getAllMovies = async () => {
     try {
       setLoading(true)
-      const res = await fetch('http://localhost:5001/shows')
+      const res = await fetch(`${API_URL}/shows`)
       const data = await res.json()
       setShows(data.filter((item) => item.category === 'TV Shows'))
     } catch (error) {

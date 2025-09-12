@@ -4,6 +4,8 @@ import toast from 'react-hot-toast'
 import { useUser } from '../../context/UserContext.jsx'
 
 const Login = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const navigate = useNavigate()
   const [form, setForm] = useState({ email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
@@ -16,7 +18,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await fetch('http://localhost:5001/login', {
+      const res = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

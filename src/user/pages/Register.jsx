@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 const Register = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const navigate = useNavigate()
 
   const [form, setForm] = useState({
@@ -53,7 +55,7 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5001/register', {
+      const res = await fetch(`${API_URL}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

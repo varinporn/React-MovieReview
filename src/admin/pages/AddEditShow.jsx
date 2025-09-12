@@ -5,6 +5,8 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 const AddEditShow = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const navigate = useNavigate()
   const { id } = useParams()
   const isEditMode = !!id
@@ -48,7 +50,7 @@ const AddEditShow = () => {
 
   useEffect(() => {
     if (!isEditMode) return
-    fetch(`http://localhost:5001/shows/${id}`)
+    fetch(`${API_URL}/shows/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setForm({
@@ -131,8 +133,8 @@ const AddEditShow = () => {
 
     const payload = { ...form, genres: genresList, stars: starsList }
     const url = isEditMode
-      ? `http://localhost:5001/shows/${id}`
-      : 'http://localhost:5001/shows'
+      ? `${API_URL}/shows/${id}`
+      : `${API_URL}/shows`
     const method = isEditMode ? 'PUT' : 'POST'
 
     fetch(url, {
@@ -142,7 +144,9 @@ const AddEditShow = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        toast.success(`Show ${isEditMode ? 'updated' : 'uploaded'} successfully!`)
+        toast.success(
+          `Show ${isEditMode ? 'updated' : 'uploaded'} successfully!`
+        )
         navigate('/admin/manage-shows')
         if (!isEditMode) {
           setForm({
@@ -391,7 +395,7 @@ const AddEditShow = () => {
           {/* Cast & Crew */}
           <div className="bg-white p-6 rounded-lg shadow">
             <h2 className="text-gray-500 font-semibold mb-4">Cast & Crew</h2>
-            <div className='space-y-4'>
+            <div className="space-y-4">
               <div className="space-y-2">
                 <label className="block font-semibold">
                   Director(s) <span className="text-red-400">*</span>

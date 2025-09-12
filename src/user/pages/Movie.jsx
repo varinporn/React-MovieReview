@@ -3,13 +3,15 @@ import List from '../components/List'
 import LoadingSpinner from '../components/LoadingSpinner'
 
 const Movie = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const [shows, setShows] = useState([])
   const [loading, setLoading] = useState(true)
 
   const getAllMovies = async () => {
     try {
       setLoading(true)
-      const res = await fetch('http://localhost:5001/shows')
+      const res = await fetch(`${API_URL}/shows`)
       const data = await res.json()
       setShows(data.filter((item) => item.category === 'Movies'))
     } catch (error) {
@@ -26,7 +28,11 @@ const Movie = () => {
   return (
     <div className="w-full">
       <div className="my-[150px] mx-auto bg-[#F8F8F2] rounded-2xl max-w-7xl px-18 py-10">
-        {loading ? <LoadingSpinner/> : <List selectedMenu="Movies" shows={shows} />}
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <List selectedMenu="Movies" shows={shows} />
+        )}
       </div>
     </div>
   )

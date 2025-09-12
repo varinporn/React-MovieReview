@@ -5,6 +5,8 @@ import ReviewCard from '../components/ReviewCard'
 import { motion } from 'framer-motion'
 
 const Home = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const bgImage =
     'https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
@@ -12,7 +14,7 @@ const Home = () => {
 
   const getShows = async () => {
     try {
-      const res = await fetch('http://localhost:5001/shows')
+      const res = await fetch(`${API_URL}/shows`)
       const data = await res.json()
       setShows(data.slice(0, 4))
     } catch (error) {

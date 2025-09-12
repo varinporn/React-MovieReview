@@ -5,13 +5,15 @@ import ConfirmModal from '../components/ConfirmModal'
 import toast from 'react-hot-toast'
 
 const ManageShows = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const [shows, setShows] = useState([])
   const [deleteId, setDeleteId] = useState(null)
   const [showConfirm, setShowConfirm] = useState(false)
 
   const getAllMovies = async () => {
     try {
-      const res = await fetch('http://localhost:5001/shows')
+      const res = await fetch(`${API_URL}/shows`)
       const data = await res.json()
       setShows(data)
     } catch (error) {
@@ -25,7 +27,7 @@ const ManageShows = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:5001/shows/${deleteId}`, {
+      const res = await fetch(`${API_URL}/shows/${deleteId}`, {
         method: 'DELETE',
       })
 

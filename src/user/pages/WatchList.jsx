@@ -4,6 +4,8 @@ import List from '../components/List'
 import LoadingSpinner from '../components/LoadingSpinner.jsx'
 
 const WatchList = () => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const { user } = useUser()
   const [shows, setShows] = useState([])
   const [loading, setLoading] = useState(true)
@@ -11,7 +13,7 @@ const WatchList = () => {
   const getAllMovies = async () => {
     try {
       setLoading(true)
-      const res = await fetch('http://localhost:5001/shows')
+      const res = await fetch(`${API_URL}/shows`)
       const data = await res.json()
       setShows(data)
     } catch (error) {
@@ -33,7 +35,7 @@ const WatchList = () => {
     <div className="w-full">
       {loading ? (
         <div className="w-full min-h-screen flex items-center justify-center">
-          <LoadingSpinner/>
+          <LoadingSpinner />
         </div>
       ) : user ? (
         watchlistShows.length > 0 ? (

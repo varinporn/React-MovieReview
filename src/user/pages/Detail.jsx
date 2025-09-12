@@ -16,10 +16,12 @@ const Detail = () => {
   const [showData, setShowData] = useState(initialData)
   const [reviews, setReviews] = useState([])
 
+  const API_URL = import.meta.env.VITE_API_URL
+
   // โหลด show ใหม่ (รีเฟรช rating)
   const fetchShow = async (showId) => {
     try {
-      const res = await fetch(`http://localhost:5001/shows/${showId}`)
+      const res = await fetch(`${API_URL}/shows/${showId}`)
       const updatedShow = await res.json()
       setShowData(updatedShow)
     } catch (err) {
@@ -45,7 +47,7 @@ const Detail = () => {
 
   const getReviews = async () => {
     try {
-      const res = await fetch('http://localhost:5001/reviews')
+      const res = await fetch(`${API_URL}/reviews`)
       const data = await res.json()
 
       setReviews(data.filter((review) => Number(review.showId) === Number(id)))
@@ -115,7 +117,7 @@ const Detail = () => {
   // update avg rate
   const updateAverageRating = async (showId) => {
     try {
-      const res = await fetch('http://localhost:5001/reviews')
+      const res = await fetch(`${API_URL}/reviews`)
       const data = await res.json()
 
       const showReviews = data.filter(
@@ -127,7 +129,7 @@ const Detail = () => {
         showReviews.reduce((sum, r) => sum + Number(r.rating), 0) /
         showReviews.length
 
-      await fetch(`http://localhost:5001/shows/${showId}`, {
+      await fetch(`${API_URL}/shows/${showId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ rating: avg.toFixed(1) }),
@@ -164,7 +166,7 @@ const Detail = () => {
           new Date().toLocaleDateString('en-GB').replace(/\//g, '-'),
       }
 
-      await fetch(`http://localhost:5001/reviews/${existingReview.id}`, {
+      await fetch(`${API_URL}/reviews/${existingReview.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedReview),
@@ -180,7 +182,7 @@ const Detail = () => {
         rating: ratingValue,
       }
 
-      await fetch('http://localhost:5001/reviews', {
+      await fetch(`${API_URL}/reviews`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newReview),
@@ -341,7 +343,7 @@ const Detail = () => {
               setUser={setUser}
               added={added}
               setAdded={setAdded}
-              variant='detail'
+              variant="detail"
             />
 
             <button

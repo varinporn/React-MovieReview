@@ -10,6 +10,8 @@ const WatchlistButton = ({
   setAdded,
   variant = 'detail',
 }) => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const handleAddToWatchlist = async () => {
     if (!user) {
       toast.error('Please login to add!')
@@ -19,7 +21,7 @@ const WatchlistButton = ({
     try {
       const updatedWatchlist = [...(user.watchlist || []), id]
 
-      const res = await fetch(`http://localhost:5001/users/${user.id}`, {
+      const res = await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +47,7 @@ const WatchlistButton = ({
         (item) => item !== id
       )
 
-      const res = await fetch(`http://localhost:5001/users/${user.id}`, {
+      const res = await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ watchlist: updatedWatchlist }),

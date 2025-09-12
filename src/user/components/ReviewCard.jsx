@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { FaStar } from 'react-icons/fa6'
 
 const ReviewCard = ({ reviews }) => {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5001/users')
+    fetch(`${API_URL}/users`)
       .then((res) => res.json())
       .then((data) => setUsers(data))
   }, [])
