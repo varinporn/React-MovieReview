@@ -269,39 +269,13 @@
   ],
   "users": [
     {
-      "email": "test@mail.com",
-      "password": "$2a$10$FJY0khEjv1LASmcCHzaUf.fHQElhCbhp8QrVPdp3vmIDovoW6zcFK",
-      "username": "test",
-      "id": 1
-    },
-    {
       "email": "testtesttest@mail.com",
       "password": "$2a$10$7s2XV.GNWWSodPeM/2x6Q./qfIlE3kcEFVAR6dMcrdwO6Rbr9UdH.",
       "username": "bvrpn",
       "id": 2,
       "watchlist": [
-        "1",
-        "5"
-      ]
-    },
-    {
-      "email": "test@gmail.com",
-      "password": "$2a$10$KU1i1NS0iEObCt9XUZ10BOqFXQ7.Cc/J1NRfpJgNwnHz4BCxLe8RK",
-      "username": "Test",
-      "id": 3,
-      "watchlist": [
-        "3",
-        "4",
-        "7"
-      ]
-    },
-    {
-      "email": "yanoi@gmail.com",
-      "password": "$2a$10$JDI/POGFSp/JHG7bVmuDCeLK6m/A67q8aSdIE0KlDxNmHn2dMXg1C",
-      "username": "Pierce",
-      "id": 4,
-      "watchlist": [
-        "2"
+        "5",
+        "1"
       ]
     },
     {
@@ -359,6 +333,42 @@
       "message": "crazyyy",
       "rating": 5,
       "id": "oGOpgNd"
+    },
+    {
+      "userId": "5",
+      "showId": "8",
+      "date": "12-09-2025",
+      "title": "test",
+      "message": "test",
+      "rating": 10,
+      "id": "if90JxA"
+    },
+    {
+      "userId": "2",
+      "showId": "1",
+      "date": "12-09-2025",
+      "title": "",
+      "message": "",
+      "rating": 10,
+      "id": "OOwuYXK"
+    },
+    {
+      "userId": "2",
+      "showId": "1",
+      "date": "12-09-2025",
+      "title": "",
+      "message": "",
+      "rating": 9,
+      "id": "qFSrEJh"
+    },
+    {
+      "userId": "2",
+      "showId": "1",
+      "date": "12-09-2025",
+      "title": "test",
+      "message": "test",
+      "rating": 7,
+      "id": "h0JQPD7"
     }
   ]
 }

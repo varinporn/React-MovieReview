@@ -34,9 +34,12 @@ const Detail = () => {
     try {
       const res = await fetch('http://localhost:5001/reviews')
       const data = await res.json()
+
       const filteredReviews = data.filter(
-        (review) => Number(review.showId) === Number(id)
+        (review) =>
+          Number(review.showId) === Number(id) && review.message?.trim() !== ''
       )
+
       setReviews(filteredReviews)
     } catch (error) {
       console.error('Failed to fetch reviews:', error)
@@ -75,6 +78,7 @@ const Detail = () => {
 
   const handleAddToWatchlist = async () => {
     if (!user) {
+      toast.error('Please login to add!')
       return
     }
 
@@ -276,16 +280,31 @@ const Detail = () => {
                 <span className="text-sm text-gray-500">/10</span>
               </div>
             </div>
+
             <div>
               <p className="text-sm font-semibold text-[#9E9E9E]">
                 YOUR RATING
               </p>
               <div
                 onClick={openRatePopup}
-                className="flex items-center gap-2 mt-1 text-[#574AA0] cursor-pointer"
+                className="mt-1 text-[#574AA0] cursor-pointer"
               >
-                <Star stroke="#574AA0" />
-                <span className="font-medium">Rate</span>
+                <span className="font-medium">
+                  {existingReview ? (
+                    <div className="flex items-center gap-2">
+                      <Star fill="#574AA0" stroke="#574AA0" />
+                      <p>
+                        <span className="text-xl">{existingReview.rating}</span>
+                        /10
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2 ">
+                      <Star stroke="#574AA0" />
+                      <p>Rate</p>
+                    </div>
+                  )}
+                </span>
               </div>
             </div>
           </div>
