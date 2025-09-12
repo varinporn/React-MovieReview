@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import GridView from './GridView'
 import ListView from './ListView'
 
 const List = ({ selectedMenu, shows }) => {
   const result = shows.length
-  const [selectedView, setSelectedView] = useState('gallery')
+
+  const [selectedView, setSelectedView] = useState(() => {
+    return localStorage.getItem('selectedView') || 'gallery'
+  })
+
+  useEffect(() => {
+    localStorage.setItem('selectedView', selectedView)
+  }, [selectedView])
 
   return (
     <div className="text-[#1E1B2E] space-y-6">
