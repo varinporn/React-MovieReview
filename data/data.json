@@ -154,6 +154,39 @@
       "imageUrl": "https://www.lemon8-app.com/seo/image?item_id=7411380103273382401&index=0&sign=98679d8d1640f1acf09ee0d276141de0"
     }
   ],
-  "users": [],
-  "reviews": []
+  "users": [
+    {
+      "email": "test@mail.com",
+      "password": "$2a$10$AnRCnih5I5eEmRBKH5fvPOTHkKKZbstrdRWYVAAKd7E6EoZwhw4nG",
+      "username": "bvrpn",
+      "id": 6,
+      "watchlist": ["8", "3"]
+    },
+    {
+      "email": "testtest@mail.com",
+      "password": "$2a$10$BWiGkQrZ2tqphCTzQ4mhpO9O.sXm5egN6kSumUdvGbloShEaqOygG",
+      "username": "testtest",
+      "id": 7
+    }
+  ],
+  "reviews": [
+    {
+      "userId": "6",
+      "showId": "3",
+      "date": "12-09-2025",
+      "title": "So funny",
+      "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet.",
+      "rating": 10,
+      "id": 6
+    },
+    {
+      "userId": "7",
+      "showId": "3",
+      "date": "12-09-2025",
+      "title": "",
+      "message": "",
+      "rating": 9,
+      "id": 7
+    }
+  ]
 }

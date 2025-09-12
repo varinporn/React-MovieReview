@@ -154,6 +154,31 @@ const Detail = () => {
   const [reviewMessage, setReviewMessage] = useState('')
   const [reviewTitle, setReviewTitle] = useState('')
 
+  // update avg rate
+  const updateAverageRating = async (showId) => {
+    try {
+      const res = await fetch('http://localhost:5001/reviews')
+      const data = await res.json()
+
+      const showReviews = data.filter(
+        (r) => String(r.showId) === String(showId)
+      )
+      if (showReviews.length === 0) return
+
+      const avg =
+        showReviews.reduce((sum, r) => sum + Number(r.rating), 0) /
+        showReviews.length
+
+      await fetch(`http://localhost:5001/shows/${showId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rating: avg.toFixed(1) }),
+      })
+    } catch (err) {
+      console.error('Failed to update average rating:', err)
+    }
+  }
+
   // rate submit
   const handleRateSubmit = async (
     ratingValue,
@@ -202,6 +227,8 @@ const Detail = () => {
         body: JSON.stringify(newReview),
       })
     }
+
+    await updateAverageRating(id)
 
     toast.success('Your review has been saved!')
     getReviews()
@@ -294,7 +321,7 @@ const Detail = () => {
                 <span className="text-lg font-semibold text-black">
                   {rating}
                 </span>
-                <span className="text-sm text-gray-500">/10</span>
+                <span className="text-sm text-gray-500 font-medium">/10</span>
               </div>
             </div>
 
