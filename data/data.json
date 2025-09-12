@@ -160,7 +160,7 @@
       "password": "$2a$10$7s2XV.GNWWSodPeM/2x6Q./qfIlE3kcEFVAR6dMcrdwO6Rbr9UdH.",
       "username": "bvrpn",
       "id": 2,
-      "watchlist": ["5", "1"]
+      "watchlist": ["5", "1", "8"]
     },
     {
       "email": "testtest@mail.com",
@@ -170,87 +170,5 @@
       "watchlist": ["1"]
     }
   ],
-  "reviews": [
-    {
-      "id": "101",
-      "userId": "1",
-      "showId": "2",
-      "date": "12-12-2024",
-      "title": "Goodd",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "8.5"
-    },
-    {
-      "id": "102",
-      "userId": "2",
-      "showId": "2",
-      "date": "12-12-2024",
-      "title": "ไม่สนุก",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "3"
-    },
-    {
-      "userId": "4",
-      "showId": "5",
-      "date": "12/09/2025",
-      "title": "",
-      "message": "",
-      "rating": "9",
-      "id": "_0bBC4y"
-    },
-    {
-      "userId": "5",
-      "showId": "1",
-      "date": "12/09/2025",
-      "title": "test",
-      "message": "testtest",
-      "rating": 6,
-      "id": "2HG3klh"
-    },
-    {
-      "userId": "5",
-      "showId": "2",
-      "date": "12-09-2025",
-      "title": "so funny",
-      "message": "crazyyy",
-      "rating": 5,
-      "id": "oGOpgNd"
-    },
-    {
-      "userId": "5",
-      "showId": "8",
-      "date": "12-09-2025",
-      "title": "test",
-      "message": "test",
-      "rating": 10,
-      "id": "if90JxA"
-    },
-    {
-      "userId": "2",
-      "showId": "1",
-      "date": "12-09-2025",
-      "title": "",
-      "message": "",
-      "rating": 10,
-      "id": "OOwuYXK"
-    },
-    {
-      "userId": "2",
-      "showId": "1",
-      "date": "12-09-2025",
-      "title": "",
-      "message": "",
-      "rating": 9,
-      "id": "qFSrEJh"
-    },
-    {
-      "userId": "2",
-      "showId": "1",
-      "date": "12-09-2025",
-      "title": "test",
-      "message": "test",
-      "rating": 7,
-      "id": "h0JQPD7"
-    }
-  ]
+  "reviews": []
 }

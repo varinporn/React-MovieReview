@@ -73,6 +73,20 @@ const Home = () => {
           <GridView shows={shows} page="landing" />
         </motion.div>
       </section>
+
+      <section className="h-screen snap-start w-full pt-34 px-20 bg-[#F8F8F2]">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="h-full"
+        >
+          <h2 className="font-semibold text-4xl mb-12 text-center text-[#1E1B2E]">
+            Top Rated Shows
+          </h2>
+        </motion.div>
+      </section>
     </div>
   )
 }
