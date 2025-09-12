@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom'
-import { FaStar } from 'react-icons/fa6'
-import { Star, StarHalf, StarIcon } from 'lucide-react'
+import { Star } from 'lucide-react'
 import { useUser } from '../../context/UserContext.jsx'
 import toast from 'react-hot-toast'
 import ReviewCard from '../components/ReviewCard.jsx'
@@ -188,7 +187,7 @@ const Detail = () => {
         body: JSON.stringify({ rating: avg.toFixed(1) }),
       })
 
-      await fetchShow(showId) 
+      await fetchShow(showId)
     } catch (err) {
       console.error('Failed to update average rating:', err)
     }
