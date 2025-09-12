@@ -23,7 +23,7 @@ const WatchList = () => {
 
   useEffect(() => {
     getAllMovies()
-  }, [])
+  }, [user])
 
   const watchlistShows = user?.watchlist
     ? shows.filter((show) => user.watchlist.includes(show.id))

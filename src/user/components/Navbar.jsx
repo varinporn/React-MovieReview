@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useUser } from '../../context/UserContext.jsx'
 import { FaSearch } from 'react-icons/fa'
 
 const Navbar = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const { user, logout } = useUser()
   const [selectedMenu, setSelectedMenu] = useState('Menu')
-  const [user, setUser] = useState(null)
 
   const menu = [
     { link: 'All Shows', path: '/all' },
@@ -17,16 +18,10 @@ const Navbar = () => {
   useEffect(() => {
     const found = menu.find((item) => item.path === location.pathname)
     setSelectedMenu(found ? found.link : 'Menu')
-
-    // Check if user is logged in
-    const storedUser = localStorage.getItem('user')
-    if (storedUser) setUser(JSON.parse(storedUser))
   }, [location.pathname])
 
   const handleLogout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    setUser(null)
+    logout() 
     navigate('/login')
   }
 

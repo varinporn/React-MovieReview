@@ -9,12 +9,19 @@ export const UserProvider = ({ children }) => {
   })
 
   useEffect(() => {
-    if (user) localStorage.setItem('user', JSON.stringify(user))
-    else localStorage.removeItem('user')
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user))
+    } else {
+      localStorage.removeItem('user')
+    }
   }, [user])
 
+  const logout = () => {
+    setUser(null)
+  }
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, logout }}>
       {children}
     </UserContext.Provider>
   )
