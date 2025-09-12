@@ -11,8 +11,21 @@ import ReviewPopup from '../components/ReviewForm.jsx'
 
 const Detail = () => {
   const { user, setUser } = useUser()
+
+  const initialData = useLoaderData()
+  const [showData, setShowData] = useState(initialData) // 👈 เก็บข้อมูล show ใน state
   const [reviews, setReviews] = useState([])
-  const data = useLoaderData()
+
+  // โหลด show ใหม่ (รีเฟรช rating)
+  const fetchShow = async (showId) => {
+    try {
+      const res = await fetch(`http://localhost:5001/shows/${showId}`)
+      const updatedShow = await res.json()
+      setShowData(updatedShow)
+    } catch (err) {
+      console.error('Failed to fetch show:', err)
+    }
+  }
 
   const {
     id,
@@ -28,7 +41,7 @@ const Detail = () => {
     stars,
     rating,
     imageUrl,
-  } = data
+  } = showData
 
   const getReviews = async () => {
     try {
@@ -174,12 +187,14 @@ const Detail = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ rating: avg.toFixed(1) }),
       })
+
+      await fetchShow(showId) // 👈 รีเฟรชค่า show หลังอัปเดต rating
     } catch (err) {
       console.error('Failed to update average rating:', err)
     }
   }
 
-  // rate submit
+  // submit review / rate
   const handleRateSubmit = async (
     ratingValue,
     reviewMessage = '',
@@ -187,7 +202,6 @@ const Detail = () => {
   ) => {
     if (!user) return
 
-    // หา review เก่าของ user สำหรับ show นี้
     const existingReview = reviews.find(
       (r) => String(r.userId) === String(user.id) && r.showId === id
     )
@@ -228,8 +242,7 @@ const Detail = () => {
       })
     }
 
-    await updateAverageRating(id)
-
+    await updateAverageRating(id) // 👈 อัปเดตค่าเฉลี่ย + โหลด show ใหม่
     toast.success('Your review has been saved!')
     getReviews()
     setShowPopup(false)
