@@ -43,11 +43,11 @@ const RatePopup = ({
       </div>
       <button
         onClick={() => handleRateSubmit(newRating)}
-        className={`py-2 bg-[#FF79C6] hover:bg-[#e657b5] text-white font-semibold rounded-lg transition-colors cursor-pointer
+        className={`py-2 bg-[#FF79C6] hover:bg-[#e657b5] text-white font-semibold rounded-lg transition-colors
     ${
       existingReview?.rating && existingReview.rating === newRating
         ? 'opacity-50 cursor-not-allowed'
-        : ''
+        : 'cursor-pointer'
     }
   `}
         disabled={existingReview?.rating && existingReview.rating === newRating}

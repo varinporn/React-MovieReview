@@ -35,19 +35,16 @@ const Detail = () => {
       const res = await fetch('http://localhost:5001/reviews')
       const data = await res.json()
 
-      const filteredReviews = data.filter(
-        (review) =>
-          Number(review.showId) === Number(id) && review.message?.trim() !== ''
-      )
-
-      setReviews(filteredReviews)
+      setReviews(data.filter((review) => Number(review.showId) === Number(id)))
     } catch (error) {
       console.error('Failed to fetch reviews:', error)
     }
   }
 
   const [showAll, setShowAll] = useState(false)
-  const visibleReviews = showAll ? reviews : reviews.slice(0, 5)
+  const visibleReviews = showAll
+    ? reviews.filter((r) => r.message?.trim() !== '')
+    : reviews.filter((r) => r.message?.trim() !== '').slice(0, 5)
 
   const logos = {
     Netflix:
@@ -132,7 +129,6 @@ const Detail = () => {
   }
 
   const [showPopup, setShowPopup] = useState(false)
-
   const [popupType, setPopupType] = useState()
 
   const openRatePopup = () => {
@@ -212,9 +208,30 @@ const Detail = () => {
     setShowPopup(false)
   }
 
+  const closePopup = () => {
+    setShowPopup(false)
+    setNewRating(0)
+    setHover(0)
+    setReviewTitle('')
+    setReviewMessage('')
+  }
+
+  useEffect(() => {
+    // update existing review หลังจาก reviews เปลี่ยน
+    const review = reviews.find(
+      (r) =>
+        String(r.userId) === String(user?.id) && Number(r.showId) === Number(id)
+    )
+    if (review) setNewRating(review.rating)
+  }, [reviews, user, id])
+
   // เช็คว่า user เคยรีวิว show นี้หรือไม่
   const hasReviewed = reviews.some(
-    (r) => r.userId === String(user?.id) && r.showId === id
+    (r) =>
+      String(r.userId) === String(user?.id) &&
+      Number(r.showId) === Number(id) &&
+      r.title?.trim() &&
+      r.message?.trim()
   )
 
   const existingReview = reviews.find(
@@ -438,7 +455,7 @@ const Detail = () => {
       {/* Reviews */}
       <div className="mt-10 my-[80px] px-2 py-10 mx-auto max-w-7xl h-full">
         <h2 className="text-2xl font-semibold text-white mb-3">Reviews</h2>
-        {reviews && reviews.length > 0 ? (
+        {visibleReviews && visibleReviews.length > 0 ? (
           <ReviewCard reviews={visibleReviews} />
         ) : (
           <div className="text-white text-xl flex items-center justify-center mt-12 mb-10">
@@ -460,7 +477,7 @@ const Detail = () => {
       </div>
 
       {showPopup && popupType === 'rate' && (
-        <PopupModal onClose={() => setShowPopup(false)}>
+        <PopupModal onClose={closePopup}>
           <RatePopup
             title={title}
             newRating={newRating || existingReview?.rating || 0}
@@ -474,7 +491,7 @@ const Detail = () => {
       )}
 
       {showPopup && popupType === 'review' && (
-        <PopupModal onClose={() => setShowPopup(false)}>
+        <PopupModal onClose={closePopup}>
           <ReviewPopup
             newRating={newRating}
             setNewRating={setNewRating}
@@ -485,6 +502,7 @@ const Detail = () => {
             reviewMessage={reviewMessage}
             setReviewMessage={setReviewMessage}
             handleRateSubmit={handleRateSubmit}
+            onClose={closePopup}
           />
         </PopupModal>
       )}
