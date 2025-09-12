@@ -13,7 +13,7 @@ const Detail = () => {
   const { user, setUser } = useUser()
 
   const initialData = useLoaderData()
-  const [showData, setShowData] = useState(initialData) // 👈 เก็บข้อมูล show ใน state
+  const [showData, setShowData] = useState(initialData)
   const [reviews, setReviews] = useState([])
 
   // โหลด show ใหม่ (รีเฟรช rating)
@@ -242,7 +242,7 @@ const Detail = () => {
       })
     }
 
-    await updateAverageRating(id) // 👈 อัปเดตค่าเฉลี่ย + โหลด show ใหม่
+    await updateAverageRating(id)
     toast.success('Your review has been saved!')
     getReviews()
     setShowPopup(false)

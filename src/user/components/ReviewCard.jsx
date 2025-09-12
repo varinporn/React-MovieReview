@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaStar } from 'react-icons/fa6'
 
 const ReviewCard = ({ reviews }) => {
@@ -11,7 +11,7 @@ const ReviewCard = ({ reviews }) => {
   }, [])
 
   const getUsername = (userId) => {
-    const user = users.find((u) => String(u.id )=== userId)
+    const user = users.find((u) => String(u.id) === userId)
     return user ? user.username : 'Unknown'
   }
 
@@ -30,7 +30,7 @@ const ReviewCard = ({ reviews }) => {
               </div>
               <div className="text-black">
                 <h3 className="mb-4 font-medium text-lg">{review.title}</h3>
-                <p className="mb-5 truncate">{review.message}</p>
+                <p className="mb-5 line-clamp-4">{review.message}</p>
 
                 <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-2">
@@ -54,7 +54,9 @@ const ReviewCard = ({ reviews }) => {
                       />
                     </svg>
 
-                    <h5 className="text-base font-medium">{getUsername(review.userId)}</h5>
+                    <h5 className="text-base font-medium">
+                      {getUsername(review.userId)}
+                    </h5>
                   </div>
                   <span className="text-sm text-[#C8C8C8]">{review.date}</span>
                 </div>
