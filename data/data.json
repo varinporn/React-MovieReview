@@ -154,49 +154,6 @@
       "imageUrl": "https://www.lemon8-app.com/seo/image?item_id=7411380103273382401&index=0&sign=98679d8d1640f1acf09ee0d276141de0"
     }
   ],
-  "users": [
-    {
-      "email": "testtesttest@mail.com",
-      "password": "$2a$10$7s2XV.GNWWSodPeM/2x6Q./qfIlE3kcEFVAR6dMcrdwO6Rbr9UdH.",
-      "username": "bvrpn",
-      "id": 2,
-      "watchlist": ["5", "8", "1"]
-    },
-    {
-      "email": "testtest@mail.com",
-      "password": "$2a$10$oNMeO7Yx5aW8PBTKzetIueiCGbI.KcYq5Gp/Y8nSEW9WxQ8eq60NC",
-      "username": "Aerika",
-      "id": 5,
-      "watchlist": ["1"]
-    }
-  ],
-  "reviews": [
-    {
-      "userId": "2",
-      "showId": "1",
-      "date": "12-09-2025",
-      "title": "test",
-      "message": "test",
-      "rating": 10,
-      "id": 1
-    },
-    {
-      "userId": "2",
-      "showId": "5",
-      "date": "12-09-2025",
-      "title": "test",
-      "message": "test",
-      "rating": 9,
-      "id": 3
-    },
-    {
-      "userId": "2",
-      "showId": "7",
-      "date": "12-09-2025",
-      "title": "test",
-      "message": "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest",
-      "rating": 10,
-      "id": 4
-    }
-  ]
+  "users": [],
+  "reviews": []
 }
