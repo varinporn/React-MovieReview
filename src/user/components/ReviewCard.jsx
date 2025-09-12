@@ -30,7 +30,7 @@ const ReviewCard = ({ reviews }) => {
               </div>
               <div className="text-black">
                 <h3 className="mb-4 font-medium text-lg">{review.title}</h3>
-                <p className="mb-5">{review.message}</p>
+                <p className="mb-5 truncate">{review.message}</p>
 
                 <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-2">

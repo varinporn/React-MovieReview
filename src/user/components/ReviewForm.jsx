@@ -11,8 +11,16 @@ const ReviewPopup = ({
   reviewMessage,
   setReviewMessage,
   handleRateSubmit,
-  onClose
+  onClose,
 }) => {
+  const isFormValid = () => {
+    return (
+      reviewMessage.trim().length >= 200 &&
+      reviewMessage.trim().length <= 800 &&
+      reviewTitle &&
+      newRating
+    )
+  }
 
   return (
     <div className="text-[#1E1B2E]">
@@ -65,22 +73,33 @@ const ReviewPopup = ({
         </div>
 
         {/* Review Message */}
-        <div className="space-y-2">
-          <h3 className="font-semibold">Review</h3>
-          <textarea
-            value={reviewMessage}
-            onChange={(e) => setReviewMessage(e.target.value)}
-            minLength="200"
-            maxLength="500"
-            className="py-2 px-4 border rounded-md w-full border-[#D9D9D9] focus:outline-none focus:ring-2 focus:ring-[#FF79C6] h-[150px]"
-          />
+        <div>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold">Review</h3>
+              <p className="text-[#AAAAAA] text-sm">
+                Minimum 200 characters required.
+              </p>
+            </div>
+            <textarea
+              value={reviewMessage}
+              onChange={(e) => setReviewMessage(e.target.value)}
+              className="py-2 px-4 border rounded-md w-full border-[#D9D9D9] focus:outline-none focus:ring-2 focus:ring-[#FF79C6] h-[150px]"
+            />
+          </div>
+          <div className="flex justify-end text-[#AAAAAA] text-sm">
+            {reviewMessage.length}/800
+          </div>
         </div>
 
         <button
           onClick={() =>
             handleRateSubmit(newRating, reviewMessage, reviewTitle)
           }
-          className="py-2 bg-[#FF79C6] hover:bg-[#e657b5] text-white font-semibold rounded-lg transition-colors cursor-pointer"
+          disabled={!isFormValid()}
+          className={`py-2 font-semibold bg-[#FF79C6] hover:bg-[#e657b5] text-white rounded-lg transition-colors ${
+            isFormValid() ? 'cursor-pointer' : 'opacity-50 cursor-not-allowed'
+          }`}
         >
           Submit
         </button>
