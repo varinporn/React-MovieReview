@@ -175,7 +175,9 @@ const Detail = () => {
         title: reviewTitle || existingReview.title,
         userId: existingReview.userId,
         showId: existingReview.showId,
-        date: existingReview.date || new Date().toLocaleDateString('en-GB'),
+        date:
+          existingReview.date ||
+          new Date().toLocaleDateString('en-GB').replace(/\//g, '-'),
       }
 
       await fetch(`http://localhost:5001/reviews/${existingReview.id}`, {
@@ -188,7 +190,7 @@ const Detail = () => {
       const newReview = {
         userId: String(user.id),
         showId: id,
-        date: new Date().toLocaleDateString('en-GB'),
+        date: new Date().toLocaleDateString('en-GB').replace(/\//g, '-'),
         title: reviewTitle,
         message: reviewMessage,
         rating: ratingValue,
@@ -209,6 +211,10 @@ const Detail = () => {
   // เช็คว่า user เคยรีวิว show นี้หรือไม่
   const hasReviewed = reviews.some(
     (r) => r.userId === String(user?.id) && r.showId === id
+  )
+
+  const existingReview = reviews.find(
+    (r) => r.userId === String(user?.id) && r.showId === String(id)
   )
 
   return (
@@ -438,11 +444,12 @@ const Detail = () => {
         <PopupModal onClose={() => setShowPopup(false)}>
           <RatePopup
             title={title}
-            newRating={newRating}
+            newRating={newRating || existingReview?.rating || 0}
             setNewRating={setNewRating}
             hover={hover}
             setHover={setHover}
             handleRateSubmit={handleRateSubmit}
+            existingReview={existingReview}
           />
         </PopupModal>
       )}

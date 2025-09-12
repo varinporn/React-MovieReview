@@ -7,7 +7,8 @@ const RatePopup = ({
   setNewRating,
   hover,
   setHover,
-  handleRateSubmit
+  handleRateSubmit,
+  existingReview,
 }) => {
   return (
     <div className="text-center flex flex-col">
@@ -32,7 +33,9 @@ const RatePopup = ({
               <Star
                 size={28}
                 fill={starValue <= (hover || newRating) ? '#FF79C6' : 'none'}
-                stroke={starValue <= (hover || newRating) ? '#FF79C6' : '#C4C4C4'}
+                stroke={
+                  starValue <= (hover || newRating) ? '#FF79C6' : '#C4C4C4'
+                }
               />
             </button>
           )
@@ -40,7 +43,14 @@ const RatePopup = ({
       </div>
       <button
         onClick={() => handleRateSubmit(newRating)}
-        className="py-2 bg-[#FF79C6] hover:bg-[#e657b5] text-white font-semibold rounded-lg transition-colors cursor-pointer"
+        className={`py-2 bg-[#FF79C6] hover:bg-[#e657b5] text-white font-semibold rounded-lg transition-colors cursor-pointer
+    ${
+      existingReview?.rating && existingReview.rating === newRating
+        ? 'opacity-50 cursor-not-allowed'
+        : ''
+    }
+  `}
+        disabled={existingReview?.rating && existingReview.rating === newRating}
       >
         Rate
       </button>
