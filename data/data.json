@@ -280,8 +280,8 @@
       "username": "bvrpn",
       "id": 2,
       "watchlist": [
-        "5",
-        "1"
+        "1",
+        "5"
       ]
     },
     {
@@ -302,6 +302,15 @@
       "id": 4,
       "watchlist": [
         "2"
+      ]
+    },
+    {
+      "email": "testtest@mail.com",
+      "password": "$2a$10$oNMeO7Yx5aW8PBTKzetIueiCGbI.KcYq5Gp/Y8nSEW9WxQ8eq60NC",
+      "username": "Aerika",
+      "id": 5,
+      "watchlist": [
+        "1"
       ]
     }
   ],
@@ -325,49 +334,31 @@
       "rating": "3"
     },
     {
-      "id": "103",
-      "userId": "2",
-      "showId": "2",
-      "date": "12-12-2024",
-      "title": "สนุกมากกกก",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "5"
+      "userId": "4",
+      "showId": "5",
+      "date": "12/09/2025",
+      "title": "",
+      "message": "",
+      "rating": "9",
+      "id": "_0bBC4y"
     },
     {
-      "id": "106",
-      "userId": "2",
-      "showId": "2",
-      "date": "12-12-2024",
-      "title": "สนุกมากกกก",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "10"
+      "userId": "5",
+      "showId": "1",
+      "date": "12/09/2025",
+      "title": "test",
+      "message": "testtest",
+      "rating": 6,
+      "id": "2HG3klh"
     },
     {
-      "id": "107",
-      "userId": "2",
+      "userId": "5",
       "showId": "2",
-      "date": "12-12-2024",
-      "title": "สนุกมากกกก",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "8"
-    },
-    {
-      "id": "109",
-      "userId": "2",
-      "showId": "2",
-      "date": "12-12-2024",
-      "title": "สนุกมากกกก",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "8"
-    },
-    {
-      "id": "108",
-      "userId": "2",
-      "showId": "2",
-      "date": "12-12-2024",
-      "title": "สนุกมากกกก",
-      "message": "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-      "rating": "8"
+      "date": "12/09/2025",
+      "title": "so funny",
+      "message": "test",
+      "rating": 8,
+      "id": "X3sziLP"
     }
   ]
 }

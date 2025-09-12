@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { FaStar } from 'react-icons/fa6'
 
 const ReviewCard = ({ reviews }) => {
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:5001/users')
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
+  }, [])
+
+  const getUsername = (userId) => {
+    const user = users.find((u) => String(u.id )=== userId)
+    return user ? user.username : 'Unknown'
+  }
 
   return (
     <div className="overflow-x-auto py-4">
@@ -9,7 +21,7 @@ const ReviewCard = ({ reviews }) => {
         {reviews.map((review) => (
           <div
             key={review.id}
-            className="max-w-90 flex-shrink-0 shadow-lg bg-white py-6 px-4 rounded-lg"
+            className="w-90 flex-shrink-0 shadow-lg bg-white py-6 px-4 rounded-lg"
           >
             <div className="space-y-2">
               <div className="text-amber-400 flex gap-2 items-center">
@@ -42,7 +54,7 @@ const ReviewCard = ({ reviews }) => {
                       />
                     </svg>
 
-                    <h5 className="text-base font-medium">testuser</h5>
+                    <h5 className="text-base font-medium">{getUsername(review.userId)}</h5>
                   </div>
                   <span className="text-sm text-[#C8C8C8]">{review.date}</span>
                 </div>

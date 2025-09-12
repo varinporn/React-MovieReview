@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useLoaderData } from 'react-router-dom'
+import { FaStar } from 'react-icons/fa6'
 import { Star, StarHalf, StarIcon } from 'lucide-react'
 import { useUser } from '../../context/UserContext.jsx'
 import toast from 'react-hot-toast'
 import ReviewCard from '../components/ReviewCard.jsx'
+import PopupModal from '../components/PopupModal.jsx'
+import RatePopup from '../components/RatePopup.jsx'
+import ReviewPopup from '../components/ReviewForm.jsx'
 
 const Detail = () => {
   const { user, setUser } = useUser()
@@ -66,13 +70,11 @@ const Detail = () => {
     if (user && user.watchlist?.includes(id)) {
       setAdded(true)
     }
-
     getReviews()
   }, [user, id])
 
   const handleAddToWatchlist = async () => {
     if (!user) {
-      alert('Please login first!')
       return
     }
 
@@ -123,6 +125,85 @@ const Detail = () => {
       console.error(error)
       toast.error('Something went wrong')
     }
+  }
+
+  const [showPopup, setShowPopup] = useState(false)
+
+  const [popupType, setPopupType] = useState()
+
+  const openRatePopup = () => {
+    if (!user) {
+      toast.error('Please login to rate!')
+      return
+    }
+    setPopupType('rate')
+    setShowPopup(true)
+  }
+
+  const openReviewPopup = () => {
+    if (!user) {
+      toast.error('Please login to review!')
+      return
+    }
+    setPopupType('review')
+    setShowPopup(true)
+  }
+
+  const [newRating, setNewRating] = useState(0)
+  const [hover, setHover] = useState(0)
+  const [reviewMessage, setReviewMessage] = useState('')
+  const [reviewTitle, setReviewTitle] = useState('')
+
+  // rate submit
+  const handleRateSubmit = async (
+    ratingValue,
+    reviewMessage = '',
+    reviewTitle = ''
+  ) => {
+    if (!user) return
+
+    // หา review เก่าของ user สำหรับ show นี้
+    const existingReview = reviews.find(
+      (r) => String(r.userId) === String(user.id) && r.showId === id
+    )
+
+    if (existingReview) {
+      // update review
+      const updatedReview = {
+        rating: ratingValue,
+        message: reviewMessage || existingReview.message,
+        title: reviewTitle || existingReview.title,
+        userId: existingReview.userId,
+        showId: existingReview.showId,
+        date: existingReview.date || new Date().toLocaleDateString('en-GB'),
+      }
+
+      await fetch(`http://localhost:5001/reviews/${existingReview.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedReview),
+      })
+    } else {
+      // create new review
+      const newReview = {
+        userId: String(user.id),
+        showId: id,
+        date: new Date().toLocaleDateString('en-GB'),
+        title: reviewTitle,
+        message: reviewMessage,
+        rating: ratingValue,
+      }
+
+      await fetch('http://localhost:5001/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newReview),
+      })
+    }
+
+    toast.success('Your review has been saved!')
+    getReviews()
+    setShowPopup(false)
   }
 
   return (
@@ -188,7 +269,10 @@ const Detail = () => {
               <p className="text-sm font-semibold text-[#9E9E9E]">
                 YOUR RATING
               </p>
-              <div className="flex items-center gap-2 mt-1 text-[#574AA0] cursor-pointer">
+              <div
+                onClick={openRatePopup}
+                className="flex items-center gap-2 mt-1 text-[#574AA0] cursor-pointer"
+              >
                 <Star stroke="#574AA0" />
                 <span className="font-medium">Rate</span>
               </div>
@@ -257,7 +341,11 @@ const Detail = () => {
               )}
               {added ? 'In Watchlist' : 'Add to Watchlist'}
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 bg-white text-[#574AA0] border border-[#574AA0] rounded-full text-sm hover:bg-[#f5f3ff] cursor-pointer">
+            
+            <button
+              onClick={openReviewPopup}
+              className="flex items-center gap-2 px-4 py-2 bg-white text-[#574AA0] border border-[#574AA0] rounded-full text-sm hover:bg-[#f5f3ff] cursor-pointer"
+            >
               <svg
                 width="20"
                 height="20"
@@ -304,18 +392,45 @@ const Detail = () => {
 
         {/* See All */}
         <div className="mt-4 text-right min-h-[28px]">
-          {!showAll && reviews.length > 5 ? (
+          {!showAll && reviews.length > 5 && (
             <button
               onClick={() => setShowAll(true)}
               className="text-[#574AA0] font-medium hover:underline"
             >
               See All
             </button>
-          ) : (
-            <div></div>
           )}
         </div>
       </div>
+
+      {showPopup && popupType === 'rate' && (
+        <PopupModal onClose={() => setShowPopup(false)}>
+          <RatePopup
+            title={title}
+            newRating={newRating}
+            setNewRating={setNewRating}
+            hover={hover}
+            setHover={setHover}
+            handleRateSubmit={handleRateSubmit}
+          />
+        </PopupModal>
+      )}
+
+      {showPopup && popupType === 'review' && (
+        <PopupModal onClose={() => setShowPopup(false)}>
+          <ReviewPopup
+            newRating={newRating}
+            setNewRating={setNewRating}
+            hover={hover}
+            setHover={setHover}
+            reviewTitle={reviewTitle}
+            setReviewTitle={setReviewTitle}
+            reviewMessage={reviewMessage}
+            setReviewMessage={setReviewMessage}
+            handleRateSubmit={handleRateSubmit}
+          />
+        </PopupModal>
+      )}
     </div>
   )
 }
