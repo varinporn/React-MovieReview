@@ -99,7 +99,7 @@
         "Geraldine James",
         "R.H. Thomson"
       ],
-      "rating": "7.0",
+      "rating": "9.0",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BZWUzZGM1OTYtMWUyNS00NTBmLTg1YTMtOTllMWFmYjk2NGU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     },
     {
@@ -210,7 +210,7 @@
         "May Hong",
         "Ji-young Yoo"
       ],
-      "rating": "-",
+      "rating": "9.0",
       "imageUrl": "https://fr.web.img6.acsta.net/img/83/64/8364d5a0828f7f9754cc8d798590c0b9.jpg"
     },
     {
@@ -346,7 +346,7 @@
       "date": "13-09-2025",
       "title": "",
       "message": "",
-      "rating": 7,
+      "rating": 9,
       "id": 11
     },
     {
@@ -411,6 +411,15 @@
       "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. ",
       "rating": 9,
       "id": 104
+    },
+    {
+      "userId": "6",
+      "showId": "8",
+      "date": "14-09-2025",
+      "title": "test",
+      "message": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.",
+      "rating": 9,
+      "id": 105
     }
   ]
 }

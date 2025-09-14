@@ -6,7 +6,7 @@ const Movie = () => {
   const API_URL = import.meta.env.VITE_API_URL
 
   const [shows, setShows] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const getAllMovies = async () => {
     try {
