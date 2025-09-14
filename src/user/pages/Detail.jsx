@@ -443,9 +443,9 @@ const Detail = () => {
           <div className="mt-10 my-[80px] px-2 py-10 mx-auto max-w-7xl h-full">
             <h2 className="text-2xl font-semibold text-white mb-3">Reviews</h2>
             {!showAll && visibleReviews && visibleReviews.length > 0 && (
-              <ReviewLayout reviews={visibleReviews} />
+              <ReviewLayout reviews={visibleReviews} page='detail'/>
             )}
-            {showAll && <ReviewGridLayout reviews={visibleReviews} />}
+            {showAll && <ReviewGridLayout reviews={visibleReviews} page='detail'/>}
             {visibleReviews.length === 0 && (
               <div className="text-white text-xl flex items-center justify-center mt-12 mb-10">
                 <p>No Review</p>

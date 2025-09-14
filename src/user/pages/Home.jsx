@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import GridView from '../components/GridView'
-import ReviewCard from '../components/ReviewCard'
 import { motion } from 'framer-motion'
+import LatestReview from '../components/LatestReview'
 
 const Home = () => {
   const API_URL = import.meta.env.VITE_API_URL
@@ -11,19 +11,43 @@ const Home = () => {
     'https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
   const [shows, setShows] = useState([])
+  const [reviews, setReviews] = useState([])
 
   const getShows = async () => {
     try {
       const res = await fetch(`${API_URL}/shows`)
       const data = await res.json()
-      setShows(data.slice(0, 4))
+
+      const topRated = data.sort((a, b) => b.rating - a.rating).slice(0, 4)
+
+      setShows(topRated)
     } catch (error) {
       console.error('Failed to fetch shows:', error)
     }
   }
 
+  const getReviews = async () => {
+    try {
+      const res = await fetch(`${API_URL}/reviews`)
+      const data = await res.json()
+
+      const sorted = data.sort((a, b) => {
+        const dateA = new Date(a.date.split('-').reverse().join('-'))
+        const dateB = new Date(b.date.split('-').reverse().join('-'))
+        return dateB - dateA
+      })
+
+      setReviews(sorted)
+    } catch (error) {
+      console.error('Failed to fetch reviews:', error)
+    }
+  }
+
+  const visibleReviews = reviews.filter((r) => r.message?.trim() !== '').slice(0,6)
+
   useEffect(() => {
     getShows()
+    getReviews()
   }, [])
 
   return (
@@ -76,7 +100,7 @@ const Home = () => {
         </motion.div>
       </section>
 
-      <section className="h-screen snap-start w-full pt-34 px-20 bg-[#F8F8F2]">
+      <section className="h-screen snap-start w-full pt-32 px-20 bg-[#F8F8F2]">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -85,8 +109,9 @@ const Home = () => {
           className="h-full"
         >
           <h2 className="font-semibold text-4xl mb-12 text-center text-[#1E1B2E]">
-            Top Rated Shows
+            Latest Reviews
           </h2>
+          <LatestReview reviews={visibleReviews} />
         </motion.div>
       </section>
     </div>
