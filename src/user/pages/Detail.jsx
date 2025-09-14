@@ -18,7 +18,6 @@ const Detail = () => {
 
   const API_URL = import.meta.env.VITE_API_URL
 
-  // โหลด show ใหม่ (รีเฟรช rating)
   const fetchShow = async (showId) => {
     try {
       const res = await fetch(`${API_URL}/shows/${showId}`)
@@ -412,9 +411,17 @@ const Detail = () => {
       {/* Reviews */}
       <div className="mt-10 my-[80px] px-2 py-10 mx-auto max-w-7xl h-full">
         <h2 className="text-2xl font-semibold text-white mb-3">Reviews</h2>
-        {visibleReviews && visibleReviews.length > 0 ? (
+        {!showAll && visibleReviews && visibleReviews.length > 0 && (
           <ReviewCard reviews={visibleReviews} />
-        ) : (
+        )}
+
+        {showAll && (
+          <div className="text-white text-xl flex items-center justify-center mt-12 mb-10">
+            <p>all reviews</p>
+          </div>
+        )}
+
+        {visibleReviews.length === 0 && (
           <div className="text-white text-xl flex items-center justify-center mt-12 mb-10">
             <p>No Review</p>
           </div>
@@ -425,7 +432,7 @@ const Detail = () => {
           {!showAll && reviews.length > 5 && (
             <button
               onClick={() => setShowAll(true)}
-              className="text-[#574AA0] font-medium hover:underline"
+              className="text-[#BD93F9] font-medium hover:underline"
             >
               See All
             </button>
