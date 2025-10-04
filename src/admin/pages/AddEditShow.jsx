@@ -31,6 +31,7 @@ const AddEditShow = () => {
     duration: '',
     imageUrl: '',
     director: '',
+    rating: '',
   })
 
   const [touched, setTouched] = useState({
@@ -63,6 +64,7 @@ const AddEditShow = () => {
           duration: data.duration || '',
           imageUrl: data.imageUrl || '',
           director: data.director || '',
+          rating: data.rating ?? '',
         })
         setGenresList(data.genres || [])
         setStarsList(data.stars || [])
@@ -131,7 +133,12 @@ const AddEditShow = () => {
     e.preventDefault()
     if (!isFormValid) return
 
-    const payload = { ...form, genres: genresList, stars: starsList }
+    const payload = {
+      ...form,
+      genres: genresList,
+      stars: starsList,
+      rating: form.rating,
+    }
     const url = isEditMode ? `${API_URL}/shows/${id}` : `${API_URL}/shows`
     const method = isEditMode ? 'PUT' : 'POST'
 
@@ -157,6 +164,7 @@ const AddEditShow = () => {
             duration: '',
             imageUrl: '',
             director: '',
+            rating: '',
           })
           setGenresList([])
           setStarsList([])
