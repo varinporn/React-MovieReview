@@ -56,7 +56,7 @@ const Detail = () => {
       const data = await res.json()
 
       const filtered = data.filter(
-        (review) => Number(review.showId) === Number(id)
+        (review) => String(review.showId) === String(id)
       )
 
       const sorted = filtered.sort((a, b) => {
@@ -219,26 +219,31 @@ const Detail = () => {
   }
 
   useEffect(() => {
-    // update existing review หลังจาก reviews เปลี่ยน
     const review = reviews.find(
       (r) =>
-        String(r.userId) === String(user?.id) && Number(r.showId) === Number(id)
+        String(r.userId) === String(user?.id) && String(r.showId) === String(id)
     )
-    if (review) setNewRating(review.rating)
+    if (review) setNewRating(Number(review.rating))
   }, [reviews, user, id])
 
   // เช็คว่า user เคยรีวิว show นี้หรือไม่
   const hasReviewed = reviews.some(
     (r) =>
       String(r.userId) === String(user?.id) &&
-      Number(r.showId) === Number(id) &&
+      String(r.showId) === String(id) &&
       r.title?.trim() &&
       r.message?.trim()
   )
+  console.log('Reviews:', reviews)
+  console.log('User ID:', user?.id, 'Show ID:', id)
 
   const existingReview = reviews.find(
-    (r) => r.userId === String(user?.id) && r.showId === String(id)
+    (r) =>
+      String(r.userId) === String(user?.id) && String(r.showId) === String(id)
   )
+
+  console.log(existingReview) // undefined
+  console.log(hasReviewed) // false
 
   const [showBackToTop, setShowBackToTop] = useState(false)
 
@@ -443,9 +448,11 @@ const Detail = () => {
           <div className="mt-10 my-[80px] px-2 py-10 mx-auto max-w-7xl h-full">
             <h2 className="text-2xl font-semibold text-white mb-3">Reviews</h2>
             {!showAll && visibleReviews && visibleReviews.length > 0 && (
-              <ReviewLayout reviews={visibleReviews} page='detail'/>
+              <ReviewLayout reviews={visibleReviews} page="detail" />
             )}
-            {showAll && <ReviewGridLayout reviews={visibleReviews} page='detail'/>}
+            {showAll && (
+              <ReviewGridLayout reviews={visibleReviews} page="detail" />
+            )}
             {visibleReviews.length === 0 && (
               <div className="text-white text-xl flex items-center justify-center mt-12 mb-10">
                 <p>No Review</p>
