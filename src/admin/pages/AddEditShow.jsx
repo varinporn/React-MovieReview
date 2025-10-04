@@ -132,9 +132,7 @@ const AddEditShow = () => {
     if (!isFormValid) return
 
     const payload = { ...form, genres: genresList, stars: starsList }
-    const url = isEditMode
-      ? `${API_URL}/shows/${id}`
-      : `${API_URL}/shows`
+    const url = isEditMode ? `${API_URL}/shows/${id}` : `${API_URL}/shows`
     const method = isEditMode ? 'PUT' : 'POST'
 
     fetch(url, {
@@ -216,8 +214,7 @@ const AddEditShow = () => {
                 />
                 {touched.description && !form.description && (
                   <p className="text-red-600 text-sm">
-                    {' '}
-                    Description is required.{' '}
+                    Description is required.
                   </p>
                 )}
               </div>
@@ -277,8 +274,7 @@ const AddEditShow = () => {
                 </select>
                 {touched.category && !form.category && (
                   <p className="text-red-600 text-sm">
-                    {' '}
-                    Show category is required.{' '}
+                    Show category is required.
                   </p>
                 )}
               </div>

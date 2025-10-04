@@ -130,8 +130,19 @@
       "imageUrl": "https://i.redd.it/what-are-the-favorites-best-movies-and-posters-ts1-ts4-v0-jtqe18fklt1f1.jpg?width=1000&format=pjpg&auto=webp&s=a46e8f81735c3ef8ce6c240099d0946c4e8c7c73"
     },
     {
-      "id": "6",
       "title": "Toy Story 2",
+      "description": "When Woody is stolen by a toy collector, Buzz and his friends set out on a rescue mission to save Woody before he becomes a museum toy property with his roundup gang Jessie, Prospector, and Bullseye.",
+      "category": "Movies",
+      "year": "1999",
+      "platform": "Disney+ Hotstar (Thailand)",
+      "episode": "",
+      "duration": "92",
+      "imageUrl": "https://i.redd.it/2vtexflofy2e1.jpeg",
+      "director": [
+        "John Lasseter",
+        "Ash Brannon",
+        "Lee Unkrich"
+      ],
       "genres": [
         "Animation",
         "Adventure",
@@ -139,24 +150,14 @@
         "Family",
         "Fantasy"
       ],
-      "category": "Movies",
-      "platform": "Disney+ Hotstar (Thailand)",
-      "year": "1999",
-      "description": "When Woody is stolen by a toy collector, Buzz and his friends set out on a rescue mission to save Woody before he becomes a museum toy property with his roundup gang Jessie, Prospector, and Bullseye.",
-      "duration": "92",
-      "director": [
-        "John Lasseter",
-        "Ash Brannon",
-        "Lee Unkrich"
-      ],
       "stars": [
         "Tom Hanks",
         "Tim Allen",
         "Don Rickles",
         "Jim Varney"
       ],
-      "rating": "9.0",
-      "imageUrl": "https://i.redd.it/2vtexflofy2e1.jpeg"
+      "id": "6",
+      "rating": "10.0"
     },
     {
       "id": "7",
@@ -186,8 +187,18 @@
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BODA5Y2M0NjctNWQzMy00ODRhLWE0MzUtYmE1YTAzZjYyYmQyXkEyXkFqcGc@._V1_.jpg"
     },
     {
-      "id": "8",
       "title": "KPop Demon Hunters",
+      "description": "A world-renowned K-Pop girl group balance their lives in the spotlight with their secret identities as demon hunters.",
+      "category": "Movies",
+      "year": "2025",
+      "platform": "Netflix",
+      "episode": "",
+      "duration": "95",
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BNTBiYWJlMjQtOTIyMy00NTY4LWFhOWItOWZhNzc3NGMyMjc2XkEyXkFqcGc@._V1_.jpg",
+      "director": [
+        "Chris Appelhans",
+        "Maggie Kang"
+      ],
       "genres": [
         "Computer Animation",
         "Pop Musical",
@@ -196,22 +207,12 @@
         "Adventure",
         "Animation"
       ],
-      "category": "Movies",
-      "platform": "Netflix",
-      "year": "2025",
-      "description": "A world-renowned K-Pop girl group balance their lives in the spotlight with their secret identities as demon hunters.",
-      "duration": "95",
-      "director": [
-        "Chris Appelhans",
-        "Maggie Kang"
-      ],
       "stars": [
         "Arden Cho",
         "May Hong",
         "Ji-young Yoo"
       ],
-      "rating": "9.5",
-      "imageUrl": "https://fr.web.img6.acsta.net/img/83/64/8364d5a0828f7f9754cc8d798590c0b9.jpg"
+      "id": "8"
     },
     {
       "id": "9",
@@ -306,7 +307,8 @@
       "watchlist": [
         "10",
         "9",
-        "1"
+        "1",
+        "6"
       ]
     }
   ],
@@ -443,7 +445,7 @@
       "date": "14-09-2025",
       "title": "",
       "message": "",
-      "rating": 9,
+      "rating": 10,
       "id": 118
     }
   ]
