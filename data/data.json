@@ -9,123 +9,64 @@
       "platform": "Netflix",
       "episode": "6",
       "imageUrl": "https://preview.redd.it/first-poster-of-squid-game-season-3-v0-5ge18fthu8ae1.jpeg?auto=webp&s=0de82b6fb99e702134e2fe77abe17e4d58d20490",
-      "director": [
-        "Hwang Dong-hyuk"
-      ],
-      "genres": [
-        "Action",
-        "Crime",
-        "Drama",
-        "Mystery",
-        "Thriller"
-      ],
-      "stars": [
-        "Lee Jung-jae",
-        "Wi Ha-joon",
-        "Jeon Young-soo",
-        "Yim Si-wan"
-      ],
+      "director": ["Hwang Dong-hyuk"],
+      "genres": ["Action", "Crime", "Drama", "Mystery", "Thriller"],
+      "stars": ["Lee Jung-jae", "Wi Ha-joon", "Jeon Young-soo", "Yim Si-wan"],
       "rating": "8.3"
     },
     {
       "id": "2",
       "title": "The Queen's Gambit",
-      "genres": [
-        "Coming-of-Age",
-        "Epic",
-        "Drama",
-        "Psychological Drama"
-      ],
+      "genres": ["Coming-of-Age", "Epic", "Drama", "Psychological Drama"],
       "category": "TV Shows",
       "platform": "Netflix",
       "year": "2020",
       "description": "Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.",
       "episode": "7",
-      "director": [
-        "Scott Frank"
-      ],
-      "stars": [
-        "Anya Taylor-Joy",
-        "Chloe Pirrie",
-        "Bill Camp"
-      ],
+      "director": ["Scott Frank"],
+      "stars": ["Anya Taylor-Joy", "Chloe Pirrie", "Bill Camp"],
       "rating": "8.5",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BYTM2NDgyODctNTA0ZS00Nzg2LTk1NDUtYzQyNDEwNjQxMTNkXkEyXkFqcGc@._V1_.jpg"
     },
     {
       "id": "3",
       "title": "Our Beloved Summer",
-      "genres": [
-        "Coming-of-Age",
-        "Drama",
-        "Korean Drama",
-        "Romance"
-      ],
+      "genres": ["Coming-of-Age", "Drama", "Korean Drama", "Romance"],
       "category": "TV Shows",
       "platform": "Netflix",
       "year": "2021",
       "description": "A coming of age, romantic comedy revolving around ex-lovers who broke up with a promise never to meet again. But the documentary they filmed ten years ago gets the fame and they are by compulsion facing camera once more.",
       "episode": "16",
-      "director": [
-        "Kim Yoon-jin"
-      ],
-      "stars": [
-        "Choi Woo-sik",
-        "Kim Da-mi",
-        "Roh Jeong-eui"
-      ],
+      "director": ["Kim Yoon-jin"],
+      "stars": ["Choi Woo-sik", "Kim Da-mi", "Roh Jeong-eui"],
       "rating": "8.0",
       "imageUrl": "https://i0.wp.com/www.korseries.com/wp-content/uploads/2021/11/Our-Beloved-Summer-SBS-Poster-19112021.jpg?resize=750%2C1089&ssl=1"
     },
     {
       "id": "4",
       "title": "Anne with an E",
-      "genres": [
-        "Drama",
-        "Family",
-        "Teen Drama",
-        "Period Drama"
-      ],
+      "genres": ["Drama", "Family", "Teen Drama", "Period Drama"],
       "category": "TV Shows",
       "platform": "Netflix",
       "year": "2017-2019",
       "description": "The adventures of a young orphan girl living in the late 19th century. Follow Anne as she learns to navigate her new life on Prince Edward Island, in this new take on L.M. Montgomery's classic novels.",
       "episode": "27",
-      "director": [
-        "Paul Fox, Amanda Tapping, Anne Wheeler, and more"
-      ],
-      "stars": [
-        "Amybeth McNulty",
-        "Geraldine James",
-        "R.H. Thomson"
-      ],
+      "director": ["Paul Fox, Amanda Tapping, Anne Wheeler, and more"],
+      "stars": ["Amybeth McNulty", "Geraldine James", "R.H. Thomson"],
       "rating": "6.5",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BZWUzZGM1OTYtMWUyNS00NTBmLTg1YTMtOTllMWFmYjk2NGU2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     },
     {
       "id": "5",
       "title": "Toy Story",
-      "genres": [
-        "Animation",
-        "Adventure",
-        "Comedy",
-        "Family",
-        "Fantasy"
-      ],
+      "genres": ["Animation", "Adventure", "Comedy", "Family", "Fantasy"],
       "category": "Movies",
       "platform": "Disney+ Hotstar (Thailand)",
       "year": "1995",
       "description": "A cowboy doll is profoundly jealous when a new spaceman action figure supplants him as the top toy in a boy's bedroom. When circumstances separate them from their owner, the duo have to put aside their differences to return to him.",
       "duration": "81",
-      "director": [
-        "John Lasseter"
-      ],
-      "stars": [
-        "Tom Hanks",
-        "Tim Allen",
-        "Don Rickles",
-        "Jim Varney"
-      ],
+      "director": ["John Lasseter"],
+      "stars": ["Tom Hanks", "Tim Allen", "Don Rickles", "Jim Varney"],
       "rating": "6.0",
       "imageUrl": "https://i.redd.it/what-are-the-favorites-best-movies-and-posters-ts1-ts4-v0-jtqe18fklt1f1.jpg?width=1000&format=pjpg&auto=webp&s=a46e8f81735c3ef8ce6c240099d0946c4e8c7c73"
     },
@@ -138,51 +79,23 @@
       "episode": "",
       "duration": "92",
       "imageUrl": "https://i.redd.it/2vtexflofy2e1.jpeg",
-      "director": [
-        "John Lasseter",
-        "Ash Brannon",
-        "Lee Unkrich"
-      ],
-      "genres": [
-        "Animation",
-        "Adventure",
-        "Comedy",
-        "Family",
-        "Fantasy"
-      ],
-      "stars": [
-        "Tom Hanks",
-        "Tim Allen",
-        "Don Rickles",
-        "Jim Varney"
-      ],
+      "director": ["John Lasseter", "Ash Brannon", "Lee Unkrich"],
+      "genres": ["Animation", "Adventure", "Comedy", "Family", "Fantasy"],
+      "stars": ["Tom Hanks", "Tim Allen", "Don Rickles", "Jim Varney"],
       "id": "6",
       "rating": "10.0"
     },
     {
       "id": "7",
       "title": "How to Train Your Dragon",
-      "genres": [
-        "Action",
-        "Adventure",
-        "Comedy",
-        "Drama",
-        "Fantasy",
-        "Sci-Fi"
-      ],
+      "genres": ["Action", "Adventure", "Comedy", "Drama", "Fantasy", "Sci-Fi"],
       "category": "Movies",
       "platform": "-",
       "year": "2025",
       "description": "As an ancient threat endangers both Vikings and dragons alike on the isle of Berk, the friendship between Hiccup, an inventive Viking, and Toothless, a Night Fury dragon, becomes the key to both species forging a new future together.",
       "duration": "125",
-      "director": [
-        "Dean DeBlois"
-      ],
-      "stars": [
-        "Mason Thames",
-        "Nico Parker",
-        "Gerard Butler"
-      ],
+      "director": ["Dean DeBlois"],
+      "stars": ["Mason Thames", "Nico Parker", "Gerard Butler"],
       "rating": "9.0",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BODA5Y2M0NjctNWQzMy00ODRhLWE0MzUtYmE1YTAzZjYyYmQyXkEyXkFqcGc@._V1_.jpg"
     },
@@ -195,10 +108,7 @@
       "episode": "",
       "duration": "95",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BNTBiYWJlMjQtOTIyMy00NTY4LWFhOWItOWZhNzc3NGMyMjc2XkEyXkFqcGc@._V1_.jpg",
-      "director": [
-        "Chris Appelhans",
-        "Maggie Kang"
-      ],
+      "director": ["Chris Appelhans", "Maggie Kang"],
       "genres": [
         "Computer Animation",
         "Pop Musical",
@@ -207,11 +117,7 @@
         "Adventure",
         "Animation"
       ],
-      "stars": [
-        "Arden Cho",
-        "May Hong",
-        "Ji-young Yoo"
-      ],
+      "stars": ["Arden Cho", "May Hong", "Ji-young Yoo"],
       "id": "8"
     },
     {
@@ -230,40 +136,22 @@
       "year": "2019",
       "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
       "duration": "132",
-      "director": [
-        "Bong Joon Ho"
-      ],
-      "stars": [
-        "Song Kang-ho",
-        "Lee Sun-kyun",
-        "Cho Yeo-jeong"
-      ],
+      "director": ["Bong Joon Ho"],
+      "stars": ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
       "rating": "7.0",
       "imageUrl": "https://preview.redd.it/your-opinions-on-this-masterpiece-v0-1g2gyomti0af1.png?auto=webp&s=a3f7570f7ff0219ae7e7cb06f55d749487a57731"
     },
     {
       "id": "10",
       "title": "Wicked: Part I",
-      "genres": [
-        "Fairy Tale",
-        "Pop Musical",
-        "Fantasy",
-        "Musical",
-        "Romance"
-      ],
+      "genres": ["Fairy Tale", "Pop Musical", "Fantasy", "Musical", "Romance"],
       "category": "Movies",
       "platform": "Apple TV",
       "year": "2024",
       "description": "Elphaba, a young woman ridiculed for her green skin, and Galinda, a popular girl, become friends at Shiz University in the Land of Oz. After an encounter with the Wonderful Wizard of Oz, their friendship reaches a crossroads.",
       "duration": "160",
-      "director": [
-        "Jon M. Chu"
-      ],
-      "stars": [
-        "Cynthia Erivo",
-        "Ariana Grande",
-        "Jeff Goldblum"
-      ],
+      "director": ["Jon M. Chu"],
+      "stars": ["Cynthia Erivo", "Ariana Grande", "Jeff Goldblum"],
       "rating": "7.0",
       "imageUrl": "https://www.lemon8-app.com/seo/image?item_id=7411380103273382401&index=0&sign=98679d8d1640f1acf09ee0d276141de0"
     }
@@ -274,42 +162,28 @@
       "password": "$2a$10$CnhB6cBUh2t0I8dP1aZ6Ou0ZlFiVkym/uiD7zCMGZNzOLNz1hgT.y",
       "username": "filmlover",
       "id": 9,
-      "watchlist": [
-        "8"
-      ]
+      "watchlist": ["8"]
     },
     {
       "email": "reviewer123@example.com",
       "password": "$2a$10$OI/fmTamAhVUg8CchuTNnOZzVdIn9NU0yzBWr/pkvZV52qYxYa3JK",
       "username": "reviewer123",
       "id": 10,
-      "watchlist": [
-        "1",
-        "4"
-      ]
+      "watchlist": ["1", "4"]
     },
     {
       "email": "kdrama_fan@example.com",
       "password": "$2a$10$V4AD0y4EQfqi.5l3suEBPORafr/E7P/QWp7EAkftSZPrX2mKkw7p6",
       "username": "kdrama_fan",
       "id": 11,
-      "watchlist": [
-        "8",
-        "4",
-        "5"
-      ]
+      "watchlist": ["8", "4", "5"]
     },
     {
       "email": "test@mail.com",
       "password": "$2a$10$HXw0XksBKF7E8ihehEOmkeNgGK6m7P3VmDpZqAKHvx4dNfxkD1hBG",
       "username": "test",
       "id": 12,
-      "watchlist": [
-        "10",
-        "9",
-        "1",
-        "6"
-      ]
+      "watchlist": ["10", "9", "1", "6"]
     }
   ],
   "reviews": [
@@ -321,15 +195,6 @@
       "message": "Squid Game ซีซัน 3 ยังคงรักษาความกดดันและบรรยากาศอึดอัดได้ดีมาก ตั้งแต่ต้นจนจบเต็มไปด้วยความระทึกใจ ตัวละครใหม่ๆ ถูกเขียนให้มีมิติ ไม่ได้เป็นเพียงแค่ผู้เข้าแข่งขันธรรมดา แต่มีเรื่องราวและแรงจูงใจที่ทำให้ผู้ชมอยากรู้จักมากขึ้น เนื้อเรื่องมีการหักมุมที่ไม่คาดคิดอยู่หลายจุด บางตอนแทบจะนั่งไม่ติดเก้าอี้ แม้จะมีจังหวะที่ช้าบ้าง แต่ก็ทำให้ผู้ชมได้ซึมซับกับความรู้สึกของตัวละครและความโหดร้ายของเกมได้อย่างเต็มที่ ถือว่าเป็นภาคต่อที่ไม่ทำให้ผิดหวัง",
       "rating": 8,
       "id": 106
-    },
-    {
-      "userId": "9",
-      "showId": "8",
-      "date": "14-09-2025",
-      "title": "แปลกใหม่ไม่เหมือนใคร",
-      "message": "K-Pop Demon Hunter เป็นการผสมผสานที่น่าสนใจระหว่างโลกไอดอลกับแฟนตาซีเหนือธรรมชาติ เรื่องราวเล่าผ่านมุมมองของสมาชิกวงที่ต้องต่อสู้กับปีศาจในความมืดควบคู่กับการรักษาภาพลักษณ์ไอดอลต่อหน้าสาธารณะ ตัวละครแต่ละคนมีคาแรกเตอร์ที่ชัดเจน มีทั้งความน่ารัก สดใส แต่พอถึงฉากต่อสู้ก็จริงจังเข้มข้น ฉากแอ็กชันออกแบบมาอย่างมันส์ ดูเพลินแบบไม่อยากกดข้าม ถือว่าเป็นไอเดียใหม่ที่ทำให้ซีรีส์ K-Pop ไม่เหมือนเดิมอีกต่อไป",
-      "rating": 9,
-      "id": 107
     },
     {
       "userId": "10",
@@ -366,15 +231,6 @@
       "message": "สิ่งที่ประทับใจใน Squid Game ซีซัน 3 คือการที่ผู้สร้างยังคงแทรกประเด็นสังคม ความเหลื่อมล้ำ และการดิ้นรนเพื่อเอาตัวรอดไว้อย่างเข้มข้น แม้ว่าจะมีฉากโหดและสะเทือนใจมากขึ้น แต่กลับทำให้ผู้ชมได้ตั้งคำถามกับความเป็นมนุษย์และศีลธรรมมากกว่าเดิม เนื้อเรื่องมีความเชื่อมโยงกับเหตุการณ์ในโลกจริง ทำให้รู้สึกใกล้ตัวและน่าคิดตามมากกกก",
       "rating": 9,
       "id": 111
-    },
-    {
-      "userId": "11",
-      "showId": "8",
-      "date": "14-09-2025",
-      "title": "เพลงกับการต่อสู้เข้ากันได้ดี",
-      "message": "สิ่งที่ทำให้ K-Pop Demon Hunter พิเศษคือการใช้ดนตรีและการแสดงบนเวทีเข้ามาเป็นส่วนหนึ่งของการต่อสู้ ทุกครั้งที่วงขึ้นแสดง เพลงและท่าเต้นถูกนำมาเชื่อมโยงกับพลังที่ใช้ปราบปีศาจได้อย่างลงตัว ฉากที่ผสมทั้งการแสดงและแอ็กชันกลายเป็นไฮไลท์ที่แฟนๆ ต้องพูดถึง แม้บางช่วงจะรู้สึกว่ายัดเพลงเข้ามาเยอะไปนิด แต่ก็เป็นเสน่ห์ที่ทำให้เรื่องนี้แตกต่างจากซีรีส์แนวอื่นๆ",
-      "rating": 10,
-      "id": 112
     },
     {
       "userId": "11",
