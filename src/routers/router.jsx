@@ -11,6 +11,7 @@ import ManageShows from '../admin/pages/ManageShows'
 import AddEditShow from '../admin/pages/AddEditShow'
 import Register from '../user/pages/Register'
 import Login from '../user/pages/Login'
+import NotFound from '../NotFound'
 
 const router = createBrowserRouter([
   {
@@ -24,13 +25,20 @@ const router = createBrowserRouter([
       { path: '/watch-list', element: <WatchList /> },
       { path: '/register', element: <Register /> },
       { path: '/login', element: <Login /> },
-
       {
         path: '/title/:id',
         element: <Detail />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5001/shows/${params.id}`),
+        loader: async ({ params }) => {
+          const res = await fetch(`http://localhost:5001/shows/${params.id}`)
+          if (!res.ok) {
+            throw new Response('Not Found', { status: 404 })
+          }
+          const data = await res.json()
+          return data
+        },
+        errorElement: <NotFound />,
       },
+      { path: '*', element: <NotFound /> },
     ],
   },
   {
@@ -51,6 +59,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5001/shows/${params.id}`),
       },
+      { path: '*', element: <NotFound /> },
     ],
   },
 ])

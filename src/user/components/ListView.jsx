@@ -63,7 +63,7 @@ const ListView = ({ shows }) => {
                   fill="#DFB51F"
                 />
               </svg>
-              <span>{show.rating}</span>
+              <span>{show.rating || '-'}</span>
 
               <WatchlistButton
                 id={show.id}

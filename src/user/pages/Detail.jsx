@@ -318,7 +318,7 @@ const Detail = () => {
                   <div className="flex items-center gap-2 mt-1">
                     <Star fill="#DFB51F" stroke="#DFB51F" />
                     <span className="text-lg font-semibold text-black">
-                      {rating}
+                      {rating || '-'}
                     </span>
                     <span className="text-sm text-gray-500 font-medium">
                       /10
