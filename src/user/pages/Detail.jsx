@@ -369,7 +369,7 @@ const Detail = () => {
                 {duration && (
                   <p>
                     <strong>Duration</strong>
-                    <span>{transformDuration(duration)}</span>
+                    <span> {transformDuration(duration)}</span>
                   </p>
                 )}
               </div>
