@@ -126,7 +126,7 @@
         "Don Rickles",
         "Jim Varney"
       ],
-      "rating": "6.0",
+      "rating": "7.0",
       "imageUrl": "https://i.redd.it/what-are-the-favorites-best-movies-and-posters-ts1-ts4-v0-jtqe18fklt1f1.jpg?width=1000&format=pjpg&auto=webp&s=a46e8f81735c3ef8ce6c240099d0946c4e8c7c73"
     },
     {
@@ -319,8 +319,8 @@
       "description": "Follows Wednesday Addams' years as a student, when she attempts to master her emerging psychic ability, thwart a killing spree, and solve the mystery that embroiled her parents.",
       "category": "TV Shows",
       "year": "2025",
-      "platform": "",
-      "episode": "",
+      "platform": "Netflix",
+      "episode": "8",
       "duration": "",
       "imageUrl": "https://m.media-amazon.com/images/M/MV5BMDE1NjNmZjgtZTg0OC00NjkxLWEzYzItMDNkMTc3YjgxZWQyXkEyXkFqcGc@._V1_.jpg",
       "director": "Alfred Gough",
@@ -375,13 +375,17 @@
       "username": "test",
       "id": 12,
       "watchlist": [
-        "10",
         "9",
-        "1",
-        "6",
-        "8",
-        "J-KjraR",
-        "t7xWyTu"
+        "J-KjraR"
+      ]
+    },
+    {
+      "email": "best@mail.com",
+      "password": "$2a$10$t6bXJxB2UBreK5ltS3.yhuXNnRwQuE2Q3129KJQz4nhl27c2cMPhW",
+      "username": "best",
+      "id": 13,
+      "watchlist": [
+        "8"
       ]
     }
   ],
@@ -529,6 +533,15 @@
       "message": "",
       "rating": 8,
       "id": 124
+    },
+    {
+      "userId": "13",
+      "showId": "5",
+      "date": "08-10-2025",
+      "title": "",
+      "message": "",
+      "rating": 8,
+      "id": 125
     }
   ]
 }
