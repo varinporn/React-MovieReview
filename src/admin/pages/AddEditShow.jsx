@@ -94,10 +94,10 @@ const AddEditShow = () => {
   const handleGenreInputChange = (e) => setGenresInput(e.target.value)
   const handleGenreInputKeyDown = (e) => {
     if (e.key === 'Enter') {
-      e.preventDefault()
+      e.preventDefault() // ป้องกันการ submit ตอน enter
       const genre = genresInput.trim()
-      if (genre && !genresList.includes(genre)) {
-        setGenresList((prev) => [...prev, genre])
+      if (genre && !genresList.includes(genre)) { // genre ไม่เป็นค่าว่าง ไม่มี genre นี้อยู่
+        setGenresList((prev) => [...prev, genre]) // copy ค่าเดิมทั้งหมดใน array แล้วเพิ่ม genre ใหม่ต่อท้าย
         setGenresInput('')
       }
     }

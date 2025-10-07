@@ -242,9 +242,6 @@ const Detail = () => {
       String(r.userId) === String(user?.id) && String(r.showId) === String(id)
   )
 
-  console.log(existingReview) // undefined
-  console.log(hasReviewed) // false
-
   const [showBackToTop, setShowBackToTop] = useState(false)
 
   useEffect(() => {
